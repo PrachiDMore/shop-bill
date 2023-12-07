@@ -15,16 +15,24 @@ const BottomNavbar = () => {
         {
           location.pathname === "/dashboard1" ? <img src="/assets/navigation-icons/home-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/home.svg" className='object-cover' alt="" />
         }
-
       </Link>
       <Link to={'/add-customer'}>
-        <AiOutlineUser className="font-extrabold text-navIcon text-3xl" />
+        {/* <AiOutlineUser className="font-extrabold text-navIcon text-3xl" /> */}
+        {
+          location.pathname === "/customers" ? <img src="/assets/navigation-icons/user-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/user.svg" className='object-cover' alt="" />
+        }
       </Link>
       <Link to={'/products'}>
-        <BsBox className="font-extrabold text-navIcon text-3xl" />
+        {/* <BsBox className="font-extrabold text-navIcon text-3xl" /> */}
+        {
+          location.pathname === "/products" ? <img src="/assets/navigation-icons/box-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/box.svg" className='object-cover' alt="" />
+        }
       </Link>
       <Link to={'/get-bill'}>
-        <LuIndianRupee className="font-extrabold text-navIcon text-3xl" />
+        {/* <LuIndianRupee className="font-extrabold text-navIcon text-3xl" /> */}
+        {
+          location.pathname === "/bill" ? <img src="/assets/navigation-icons/bill-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/bill.svg" className='object-cover' alt="" />
+        }
       </Link>
     </div>
   )

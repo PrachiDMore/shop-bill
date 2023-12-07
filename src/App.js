@@ -21,6 +21,8 @@ import ShowCustomerDetails from './pages/AdminPages/ShowCustomerDetails';
 
 import ShowSingleBill from './pages/AdminPages/ShowSingleBill';
 import MainNew from './pages/AdminPages/MainNew';
+import LoginNew from './pages/LoginNew';
+import CreateAccount from './pages/CreateAccount';
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
             <Routes>
               <Route path="/" element={<InitialPage />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/login1" element={<LoginNew />} />
+              <Route path="/create-account" element={<CreateAccount />} />
               <Route path="/verify" element={<VerifyOTP />} />
               <Route path="/dashboard" element={<Main />} />
               <Route path="/dashboard1" element={<MainNew />} />

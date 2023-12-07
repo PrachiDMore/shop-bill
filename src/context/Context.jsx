@@ -60,9 +60,9 @@ const Context = ({ children }) => {
             .then((res) => {
 
 
-              if (location.pathname === "/login" || location.pathname === "/") {
+              if (location.pathname === "/login1" || location.pathname === "/") {
                 setTimeout(() => {
-                  navigate("/dashboard");
+                  navigate("/dashboard1");
                 }, 200);
 
                 setUserLoading(false)
@@ -72,11 +72,11 @@ const Context = ({ children }) => {
             });
         } catch (error) {
           setUserLoading(false);
-          navigate("/login");
+          navigate("/login1");
         }
       } else {
         setUserLoading(false);
-        navigate("/login");
+        navigate("/login1");
       }
     };
 

@@ -16,6 +16,7 @@ import PageLoader from "../../components/PageLoader";
 import { useNavigate } from "react-router-dom";
 import LayoutNew from '../../components/layout/LayoutNew'
 import InputNew from "../../components/InputNew";
+import ButtonNew from "../../components/Button/ButtonNew";
 
 const MainNew = () => {
 
@@ -142,14 +143,19 @@ const MainNew = () => {
 
   return (
     <LayoutNew>
-      <Sidebar title={"Profile"}/>
+      <Sidebar title={"Profile"} />
       <div className="w-screen min-h-screen pt-20 z-50">
         <ImageUploadComponent businessLogo={formState?.businessLogo} setformState={setformState} formState={formState} isEditable={isEditable} setisEditable={setisEditable} />
-        <div className="w-screen px-7 grid gap-4 ">
-          <InputNew placeholder={'Business name'} icon={<AiOutlineShop className='text-xl'/> }/>
-          <InputNew/>
-          <InputNew/>
-          <InputNew/>
+        <div className="w-screen lg:px-40 px-7 lg:pt-10 pt-4 flex flex-col lg:flex lg:gap-8 gap-5 ">
+          <div className="grid lg:grid-cols-2 lg:gap-8 gap-5">
+            <InputNew className={'w-full'} placeholder={'Business name'} icon={'/assets/business.svg'} />
+            <InputNew className={'w-full'} placeholder={'Business type'} icon={'/assets/business-type.svg'} />
+          </div>
+          <div className="grid lg:grid-cols-2 lg:gap-8 gap-5">
+            <InputNew placeholder={'GST number'} icon={'/assets/gst-no.svg'} />
+            <InputNew placeholder={'Location'} icon={'/assets/location.svg'} />
+          </div>
+          <ButtonNew className={'w-40'} text={'Save'} />
         </div>
       </div>
 
