@@ -142,10 +142,11 @@ const MainNew = () => {
 
   return (
     <LayoutNew>
+      <Sidebar title={"Profile"}/>
       <div className="w-screen min-h-screen pt-20 z-50">
         <ImageUploadComponent businessLogo={formState?.businessLogo} setformState={setformState} formState={formState} isEditable={isEditable} setisEditable={setisEditable} />
         <div className="w-screen px-7 grid gap-4 ">
-          <InputNew label={'Business'} placeholder={'Business'} icon={<AiOutlineShop className='text-xl'/> }/>
+          <InputNew placeholder={'Business name'} icon={<AiOutlineShop className='text-xl'/> }/>
           <InputNew/>
           <InputNew/>
           <InputNew/>

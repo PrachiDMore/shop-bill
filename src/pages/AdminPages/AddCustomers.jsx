@@ -9,6 +9,7 @@ import axios from "axios";
 import { ContextAuth } from "../../context/Context";
 import CustomerCard from "../../components/cards/HomeCard";
 import { Link, useNavigate } from "react-router-dom";
+import BottomNavbar from "../../components/BottomNavbar";
 
 const AddCustomers = () => {
   const [modal, setModal] = useState({ show: false, data: {} });
@@ -78,7 +79,8 @@ const AddCustomers = () => {
           />
         )}
         <Sidebar />
-        <Navigation />
+        {/* <Navigation /> */}
+        <BottomNavbar/>
         <p className="w-full text-center text-xl font-bold">Customer</p>
         <div className=" md:w-[70vw]  m-auto  flex  justify-center items-center pt-6">
           <input

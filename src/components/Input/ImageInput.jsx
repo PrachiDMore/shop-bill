@@ -13,12 +13,11 @@ const ImageUploadComponent = ({
 }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isImageSelected, setIsImageSelected] = useState(false);
-  
+
   const [loading, setLoading] = useState(false);
   const [upload, setUpload] = useState(true);
   const [publicId, setPublicId] = useState(null);
   const { setLogoUrl } = ContextAuth();
-
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setSelectedImage(file);
@@ -66,17 +65,14 @@ const ImageUploadComponent = ({
   };
 
   return (
-    <div className="max-w-md mx-auto ">
-      {/* <h1 className="text-lg font-bold mb-2 text-center">Business Logo</h1> */}
+    <div className="max-w-md mx-auto relative z-[1000]">
       {businessLogo ? (
         <div className="flex items-center justify-center mb-2">
-          <div className="w-28 h-28 rounded-full overflow-hidden">
-            <label htmlFor="uploadImage" className="w-32 h-32 rounded-full border-2 border-dashed border-gray-400 flex items-center justify-center cursor-pointer">
-              <img src={ isImageSelected ? URL.createObjectURL(selectedImage) : formState?.businessLogo }
+          <div>
+            <label htmlFor="uploadImage" className="main-shadow rounded-full flex items-center justify-center cursor-pointer">
+              <img src={isImageSelected ? URL.createObjectURL(selectedImage) : formState?.businessLogo}
                 alt="Uploaded Image"
-                className={`w-full h-full object-contain ${
-                  isEditable ? "cursor-pointer" : "cursor-default"
-                }`}
+                className={`h-28 w-28 object-cover bg-white border-4 rounded-full border-white ${isEditable ? "cursor-pointer" : "cursor-default"}`}
               />
             </label>
           </div>
@@ -138,27 +134,31 @@ const ImageUploadComponent = ({
           </label>
         </div>
       )}
+      <div className="flex flex-col">
+        <h1 className="text-lg font-bold text-center">{formState?.businessName}</h1>
+        <h1 className="text-xs font-semibold text-center">{formState?.phoneNo}</h1>
+      </div>
 
 
-    { window.self === window.top &&   
-    <input
-        id="uploadImage"
-        type="file"
-        
-        readOnly={!isEditable}
-        disabled={ !isEditable}
-        accept="image/*"
-        onChange={handleImageChange}
-        className="hidden"
-      />
+      {window.self === window.top &&
+        <input
+          id="uploadImage"
+          type="file"
 
-      
-}
-{
-window.self !== window.top && isEditable && <p className="text-center text-sm p-2 ">
-Use Website to Update Logo
-</p>  
-}
+          readOnly={!isEditable}
+          disabled={!isEditable}
+          accept="image/*"
+          onChange={handleImageChange}
+          className="hidden"
+        />
+
+
+      }
+      {
+        window.self !== window.top && isEditable && <p className="text-center text-sm p-2 ">
+          Use Website to Update Logo
+        </p>
+      }
       {isImageSelected && (
         <div className="flex justify-center items-center">
           <button
