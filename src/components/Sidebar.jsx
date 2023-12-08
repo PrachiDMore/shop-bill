@@ -42,14 +42,14 @@ const Sidebar = ({ title }) => {
   return (
     <>
       {modal.show && <LogoutModal data={modal.show} setModel={setModal} />}
-      <div className="absolute top-0 left-0 z-50 w-full transition duration-300 ease-in-out ">
+      <div className="h-16 absolute top-0 left-0 z-50 w-full transition duration-300 ease-in-out ">
         {/* <div className=""> */}
         <div className={`  ${isDarkMode ? " text-black" : "text-gray-800"} flex justify-between items-center h-16 px-4 `} >
           <button onClick={() => { setModal({ show: true }); }} className={`flex justify-center items-center rounded-full p-2 text-white`} >
             <GrPowerShutdown />
           </button>
 
-          <div className={`   font-semibold  text-2xl ${isDarkMode ? " text-white" : " text-gray-800"} `} > {title} </div>
+          <div className={`   font-semibold  text-xl ${isDarkMode ? " text-white" : " text-gray-800"} `} > {title} </div>
 
           <button className={`opacity-0 pointer-events-none flex justify-center items-center rounded-full p-2 text-white`} >
             <GrPowerShutdown />

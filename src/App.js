@@ -23,6 +23,11 @@ import ShowSingleBill from './pages/AdminPages/ShowSingleBill';
 import MainNew from './pages/AdminPages/MainNew';
 import LoginNew from './pages/LoginNew';
 import CreateAccount from './pages/CreateAccount';
+import Customers from './pages/AdminPages/Customer';
+import AddBills from './pages/AdminPages/AddBills';
+import ProductsList from './pages/AdminPages/ProductsList';
+import ProductItemDetail from './pages/AdminPages/ProductItemDetail';
+import GetCustomerBills from './pages/AdminPages/GetCustomerBills';
 
 
 function App() {
@@ -33,20 +38,25 @@ function App() {
           <ThemeProvider>
             <Routes>
               <Route path="/" element={<InitialPage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/login1" element={<LoginNew />} />
+              {/* <Route path="/login" element={<Login />} /> */}
+              <Route path="/login" element={<LoginNew />} />
               <Route path="/create-account" element={<CreateAccount />} />
               <Route path="/verify" element={<VerifyOTP />} />
-              <Route path="/dashboard" element={<Main />} />
-              <Route path="/dashboard1" element={<MainNew />} />
+              {/* <Route path="/dashboard" element={<Main />} /> */}
+              <Route path="/dashboard" element={<MainNew />} />
               <Route path="/add-customer" element={<AddCustomers />} />
+              <Route path="/customers" element={<Customers />} />
               <Route path="/products" element={<Products/>} />
+              <Route path="/products-list" element={<ProductsList/>} />
               <Route path="/get-bill" element={<GetBills />} />
+              <Route path="/get-bills-all" element={<GetCustomerBills />} />
               <Route path="/darkmode" element={<Card />} />
               <Route path="/add-items" element={<AddItems />} />
+              <Route path="/add-bills" element={<AddBills />} />
               <Route path="/invoice/:id" element={<ShowSingleBill />} />
               <Route path="/customer-details/:id" element={<ShowCustomerDetails />} />
               <Route path="/product-details/:id" element={<ProductDetail />} />
+              <Route path="/product-item-details/:id" element={<ProductItemDetail />} />
               
             </Routes>
           </ThemeProvider>

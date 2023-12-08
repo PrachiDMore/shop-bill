@@ -12,106 +12,88 @@ import { ContextAuth } from "../context/Context";
 import { CSSTransition } from "react-transition-group";
 import Input from "../components/Input/Input";
 import { GrAdd, GrLinkNext, GrLinkPrevious } from "react-icons/gr";
+import { IoClose } from "react-icons/io5";
+import InputNew from "../components/InputNew";
 
 
 
 
 
-const AddProductModal = ({ data, setModal }) => {
+const AddProductModal = ({ data, setModal, modal }) => {
 
   const business = jwtDecode(`${localStorage.getItem("token")}`);
   const businessId = business._id;
 
   const { setProductdata } = ContextAuth();
 
-    const [showModal, setShowModal] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
 
-    const closeModal = () => {
-        setShowModal(false);
-        setTimeout(() => {
-          setModal({ show: false });
-        }, 100); // Wait for the closing animation to complete (300ms)
-      };
-      useEffect(() => {
-        setShowModal(true);
-      }, [data]);
+  const closeModal = () => {
+    setShowModal(false);
+    setTimeout(() => {
+      setModal({ show: false });
+    }, 100); // Wait for the closing animation to complete (300ms)
+  };
 
-      const [productName, setproductName] = useState("");
-      const [productCategory, setproductCategory] = useState("");
-      const [productSubCategory, setproductSubCategory] = useState("");
-      const [productPrice, setproductPrice] = useState("");
+  useEffect(() => {
+    setproductName(modal?.data?.ProductName)
+    setproductCategory(modal?.data?.ProductCategory)
+    setproductSubCategory(modal?.data?.ProductSubCategory)
+    setproductPrice(modal?.data?.ProductPrice)
+    setShowModal(true);
+  }, [modal]);
 
-      const addProduct = async(e) => {
-          e.preventDefault();
+  const [productName, setproductName] = useState("");
+  const [productCategory, setproductCategory] = useState("");
+  const [productSubCategory, setproductSubCategory] = useState("");
+  const [productPrice, setproductPrice] = useState("");
 
-          try {
-            if (productName.length > 1 && productPrice > 0) {
-              setLoading(true);
-              await axios("https://khatabook-one.vercel.app/addproduct", {
-                method: "POST",
-                data: {
-                  ProductName: productName,
-                  ProductCategory: productCategory,
-                  ProductSubCategory: productSubCategory,
-                  ProductPrice:productPrice,
-                  businessId: businessId,
-                },
-                headers: {
-                  "Content-Type": "application/json",
-                  Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-              })
-                .then((res) => {
-                  const productId = res.data._id;
-                  setProductdata(productId);
-                   toast.success("Product Added Successfully", {
-                    position: "top-center",
-                    autoClose: 1500,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: false,
-                    theme: "light",
-                  });
-                  setLoading(false);
-                  setTimeout(() => {
-                    window.location.reload();
-                  },2000)
-                 
-                  // console.log(res.data.token);
-                  
-                })
-                .catch((err) => {
-                  console.log(err);
-                  toast.error(err?.message, {
-                    position: "top-center",
-                    autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: false,
-                    pauseOnHover: false,
-                    draggable: false,
-                    progress: false,
-                    theme: "light",
-                  });
-                  setLoading(false);
-                });
-            } else {
-              toast.error("Enter Details Correctly", {
-                position: "top-center",
-                autoClose: 3000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: false,
-                draggable: false,
-                progress: false,
-                theme: "light",
-              });
-            }
-          } catch (err) {
+  const addProduct = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (productName.length > 1 && productPrice > 0) {
+        setLoading(true);
+        await axios("https://khatabook-one.vercel.app/addproduct", {
+          method: "POST",
+          data: {
+            ProductName: productName,
+            ProductCategory: productCategory,
+            ProductSubCategory: productSubCategory,
+            ProductPrice: productPrice,
+            businessId: businessId,
+          },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
+          .then((res) => {
+            const productId = res.data._id;
+            setProductdata(productId);
+            toast.success("Product Added Successfully", {
+              position: "top-center",
+              autoClose: 1500,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: false,
+              progress: false,
+              theme: "light",
+            });
+            setLoading(false);
+            setTimeout(() => {
+              window.location.reload();
+            }, 2000)
+
+            // console.log(res.data.token);
+
+          })
+          .catch((err) => {
+            console.log(err);
             toast.error(err?.message, {
               position: "top-center",
               autoClose: 3000,
@@ -122,119 +104,160 @@ const AddProductModal = ({ data, setModal }) => {
               progress: false,
               theme: "light",
             });
-          }
-      };
+            setLoading(false);
+          });
+      } else {
+        toast.error("Enter Details Correctly", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: false,
+          progress: false,
+          theme: "light",
+        });
+      }
+    } catch (err) {
+      toast.error(err?.message, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: false,
+        progress: false,
+        theme: "light",
+      });
+    }
+  };
 
-    return(
-        <>
-        <LayoutMain>
+  return (
+    <>
+      <LayoutMain>
         <CSSTransition
           in={showModal}
           classNames="modal"
           timeout={300}
           unmountOnExit
         >
-        <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[100] ">
+          <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[10000] ">
 
-        <div
+            <div
               className={
-                "productForm" //relative h-[60vh] w-[90vw] md:w-[50vw]  bg-white rounded-lg
+                "relative py-5 w-[90vw] md:w-[50vw]  bg-white rounded-lg "
               }
             >
 
-                <div>
+              <div>
                 <form
                   action=""
-                  className={`text-black pt-8 px-5 flex flex-col gap-y-6 justify-center h-full `}
+                  className={`text-black px-5 flex flex-col gap-y-4 justify-center  `}
                 >
-                  <button
-                    onClick={closeModal}
-                    className="absolute top-4 right-4 font-bold text-2xl text-red-600"
-                  >
-                    <AiOutlineClose />
-                  </button>
+                  <div className="flex justify-between items-center">
+                    <h4 className="font-bold text-xl">{!modal?.update ? "Add Product" : "Product Details"}</h4>
+                    <button
+                      type="button"
+                      onClick={closeModal}
+                      className="font-bold text-2xl"
+                    >
+                      <IoClose />
+                    </button>
+                  </div>
 
-                  <Input
+                  <InputNew
                     type={"input"}
                     id={"pName"}
                     required={true}
-                    Label={"Product Name"}
+                    label={"Product Name"}
                     placeholder={"Enter the Product Name"}
                     value={productName}
                     onChange={(e) => {
                       setproductName(e.target.value);
                     }}
-                    className={`w-[95%]  
-                  text-black `}
                   />
 
-                  <Input
+                  <InputNew
                     type={"input"}
                     id={"pCategory"}
                     required={true}
-                    Label={"Product Category"}
+                    label={"Product Category"}
                     placeholder={"Enter Category"}
                     value={productCategory}
                     onChange={(e) => {
                       setproductCategory(e.target.value);
                     }}
-                    className={`w-[95%]  
-                  text-black `}
                   />
 
-                  <Input
+                  <InputNew
                     type={"input"}
                     id={"pSubCategory"}
                     required={true}
-                    Label={"Product SubCategory"}
+                    label={"Product SubCategory"}
                     placeholder={"Enter SubCategory"}
                     value={productSubCategory}
                     onChange={(e) => {
                       setproductSubCategory(e.target.value);
                     }}
-                    className={`w-[95%]  
-                  text-black `}
                   />
 
-                  <Input
+                  <InputNew
                     type={"input"}
                     id={"pPrice"}
                     required={true}
-                    Label={"Product Price"}
+                    label={"Product Price"}
                     placeholder={"Enter Product Price"}
                     value={productPrice}
                     onChange={(e) => {
                       setproductPrice(e.target.value);
                     }}
-                    className={`w-[95%]  
-                  text-black `}
                   />
 
-                  <button
+                  {!modal?.update ? <div className={"pt-3 w-full  flex justify-center items-center"}>
+                    <button
                       onClick={addProduct}
-                      className="flex justify-center items-center gap-x-2 bg-blue-600 px-3 py-1.5 rounded-md font-semibold hover:bg-blue-700 shadow hover:shadow-lg duration-150"
+                      type="button"
+                      className="w-full py-3 px-4 bg-main text-white rounded-md text-center font-semibold"
                     >
                       {!loading ? (
-                        <p className="flex items-center gap-x-1">
-                          {" "}
-                          Next <GrLinkNext />
+                        <p className="flex items-center font-semibold text-center justify-center">
+                          Next
                         </p>
                       ) : (
-                        <Spinner />
+                        <div className="flex justify-center items-center">
+                          <Spinner />
+                        </div>
                       )}
                     </button>
+                  </div> : <div className={"pt-3 w-full  flex justify-center items-center"}>
+                    <button
+                    type="button"
+                      onClick={closeModal}
+                      className="w-full py-3 px-4 bg-main text-white rounded-md text-center font-semibold"
+                    >
+                      {!loading ? (
+                        <p className="flex items-center font-semibold text-center justify-center">
+                          Next
+                        </p>
+                      ) : (
+                        <div className="flex justify-center items-center">
+                          <Spinner />
+                        </div>
+                      )}
+                    </button>
+                  </div>}
                 </form>
+              </div>
             </div>
-        </div>
-    
-        </div>
+
+          </div>
 
 
         </CSSTransition>
         <ToastContainer />
-        </LayoutMain>
-        </>
-    );
+      </LayoutMain>
+    </>
+  );
 }
 
 export default AddProductModal;

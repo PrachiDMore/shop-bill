@@ -40,60 +40,54 @@ const CustomerCard = ({
   const closeModal = () => {
     setIsModalOpen(false);
   };
- const formattedDate = formatDate(date);
+  const formattedDate = formatDate(date);
 
   return (
     <>
       <div
-        className={` ${isDarkMode
-            ? "bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-blue-950 via-blue-950 to-gray-900 text-white "
-            : "bg-gray-50 "
-          } text-${isDarkMode ? "white" : "gray-800"
-          } p-4 rounded-lg  shadow-md  transform  perspective-100  hover:shadow-lg  overflow-hidden border m-2`}
+        className={`bg-white text-gray-800 p-4 rounded-lg  shadow-md  transform  perspective-100  hover:shadow-lg  overflow-hidden border`}
       >
         <div className="flex justify-between items-center gap-x-2 ">
           <p className="font-medium ">Total: Rs {amount - discount}</p>
-          <p className="font-medium ">Bill Id: {billId.slice(0, 10)}</p>
+          {/* <p className="font-medium ">Bill Id: {billId.slice(0, 10)}</p> */}
         </div>
         <div className=" py-2 flex justify-between items-start  ">
           <div className="w-6/12" onClick={handleCardClick} ref={ref}>
-            <button className="flex flex-col   gap-y-3 md:flex-none justify-start">
-              <div className="font-semibold text-left ">{name}</div>
+            <p className="flex flex-col   gap-y-1 md:flex-none justify-start">
+              <div className="font-bold text-left ">{name}</div>
 
-              <p className=" font-semibold  ">{mobileNumber}</p>
-            </button>
+              <p className="text-sm font-medium  ">{mobileNumber}</p>
+            </p>
           </div>
 
           <div className="flex flex-col gap-y-3 justify-center items-end w-6/12">
-            {showPaid ? (
-              <button
-                // className="text-3xl text-center mb-2 font-bold text-green-500"
-                className={`text-center flex gap-x-1 items-center text-xl  `}
-                onClick={() => {
-                  setShowPaid(false);
-                }}
-              >
-                {/* <p className="text-sm ">Paid:</p> */}
-                <p className="font-bold  text-green-500">&#8377;{paid}</p>
-              </button>
-            ) : (
-              <button
-                className={"text-center flex gap-x-1 items-center text-xl "}
-                onClick={() => {
-                  setShowPaid(true);
-                }}
-              >
-                {/* <p className="text-sm ">UnPaid: </p> */}
-                <p className="font-bold text-red-500">
-                  &#8377;{amount - discount - paid}
-                </p>
-              </button>
-            )}
+            {
+              showPaid ? (
+                <button
+                  // className="text-3xl text-center mb-2 font-bold text-green-500"
+                  className={`text-center flex gap-x-1 items-center text-xl  `}
+                  onClick={() => {
+                    setShowPaid(false);
+                  }}
+                >
+                  {/* <p className="text-sm ">Paid:</p> */}
+                  <p className="font-bold  text-green-500">&#8377;{paid}</p>
+                </button>
+              ) : (
+                <button
+                  className={"text-center flex gap-x-1 items-center text-xl "}
+                  onClick={() => {
+                    setShowPaid(true);
+                  }}
+                >
+                  {/* <p className="text-sm ">UnPaid: </p> */}
+                  <p className="font-bold text-red-500">
+                    &#8377;{amount - discount - paid}
+                  </p>
+                </button>
+              )
+            }
 
-            <div>
-              <div className="text-center font-semibold ">{formattedDate}</div>
-              <p className="text-sm text-center">{time}</p>
-            </div>
           </div>
         </div>
 

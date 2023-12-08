@@ -22,7 +22,7 @@ const LoginNew = ({ nav = false }) => {
     })
     .then((res) => {
       localStorage.setItem("token", `${res?.data.token}`);
-      navigate("/dashboard1");
+      navigate("/dashboard");
     })
   }
 

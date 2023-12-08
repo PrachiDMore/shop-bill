@@ -8,8 +8,6 @@ const ImageUploadComponent = ({
   businessLogo,
   setformState,
   formState,
-  isEditable,
-  setisEditable,
 }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isImageSelected, setIsImageSelected] = useState(false);
@@ -46,7 +44,6 @@ const ImageUploadComponent = ({
               Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
           }).then((res) => {
-            setisEditable(false);
             setformState({
               ...formState,
               businessLogo: res?.data.response.businessLogo,
@@ -72,7 +69,7 @@ const ImageUploadComponent = ({
             <label htmlFor="uploadImage" className="main-shadow rounded-full flex items-center justify-center cursor-pointer">
               <img src={isImageSelected ? URL.createObjectURL(selectedImage) : formState?.businessLogo}
                 alt="Uploaded Image"
-                className={`h-28 w-28 object-cover bg-white border-4 rounded-full border-white ${isEditable ? "cursor-pointer" : "cursor-default"}`}
+                className={`h-28 w-28 object-cover bg-white border-4 rounded-full border-white cursor-pointer`}
               />
             </label>
           </div>
@@ -144,9 +141,6 @@ const ImageUploadComponent = ({
         <input
           id="uploadImage"
           type="file"
-
-          readOnly={!isEditable}
-          disabled={!isEditable}
           accept="image/*"
           onChange={handleImageChange}
           className="hidden"
@@ -155,7 +149,7 @@ const ImageUploadComponent = ({
 
       }
       {
-        window.self !== window.top && isEditable && <p className="text-center text-sm p-2 ">
+        window.self !== window.top && <p className="text-center text-sm p-2 ">
           Use Website to Update Logo
         </p>
       }

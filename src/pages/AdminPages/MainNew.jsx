@@ -19,12 +19,19 @@ import InputNew from "../../components/InputNew";
 import ButtonNew from "../../components/Button/ButtonNew";
 
 const MainNew = () => {
-
+  const initialstate = {
+    businessLogo: "",
+    businessName: "",
+    businessType: "",
+    gstNo: "",
+    location: "",
+  };
+  const [formState, setformState] = useState(initialstate);
   const { isDarkMode } = ThemeContextAuth();
-  const [isEditable, setisEditable] = useState(false);
-  const { setBusiness, formState, setformState, logoUrl, setUserLoading } = ContextAuth();
+  const { setBusiness, logoUrl, setUserLoading } = ContextAuth();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -37,8 +44,6 @@ const MainNew = () => {
         },
       })
         .then((res) => {
-          setisEditable(false);
-          setformState(res.data);
           window.location.reload();
           toast.success("Profile updated !", {
             position: "top-center",
@@ -68,17 +73,11 @@ const MainNew = () => {
     }
   };
 
-  const handleEditClick = () => {
-    setformState((prevData) => ({
-      ...prevData,
-    }));
-    setisEditable(true);
-  };
   const handleChange = (e) => {
-    setformState((prevdata) => ({
-      ...prevdata,
+    setformState({
+      ...formState,
       [e.target.id]: e.target.value,
-    }));
+    });
   };
 
   useEffect(() => {
@@ -96,6 +95,7 @@ const MainNew = () => {
         },
       })
         .then((res) => {
+          console.log(res.data)
           const response = res.data.response[0];
           setformState(response);
           setBusiness(response);
@@ -105,9 +105,7 @@ const MainNew = () => {
             res.data.response[0]?.gstNo ||
             res.data.response[0]?.location
           ) {
-            setisEditable(false);
           } else {
-            setisEditable(true);
           }
           setLoading(false);
         })
@@ -144,20 +142,20 @@ const MainNew = () => {
   return (
     <LayoutNew>
       <Sidebar title={"Profile"} />
-      <div className="w-screen min-h-screen pt-20 z-50">
-        <ImageUploadComponent businessLogo={formState?.businessLogo} setformState={setformState} formState={formState} isEditable={isEditable} setisEditable={setisEditable} />
+      <form onSubmit={handleSubmit} className="w-screen min-h-screen pt-20 z-50">
+        <ImageUploadComponent businessLogo={formState?.businessLogo} setformState={setformState} formState={formState} />
         <div className="w-screen lg:px-40 px-7 lg:pt-10 pt-4 flex flex-col lg:flex lg:gap-8 gap-5 ">
           <div className="grid lg:grid-cols-2 lg:gap-8 gap-5">
-            <InputNew className={'w-full'} placeholder={'Business name'} icon={'/assets/business.svg'} />
-            <InputNew className={'w-full'} placeholder={'Business type'} icon={'/assets/business-type.svg'} />
+            <InputNew id={"businessName"} required={true} value={formState?.businessName} onChange={handleChange} className={'w-full'} placeholder={'Business name'} icon={'/assets/business.svg'} />
+            <InputNew id={"businessType"} required={true} value={formState?.businessType} onChange={handleChange} className={'w-full'} placeholder={'Business type'} icon={'/assets/business-type.svg'} />
           </div>
           <div className="grid lg:grid-cols-2 lg:gap-8 gap-5">
-            <InputNew placeholder={'GST number'} icon={'/assets/gst-no.svg'} />
-            <InputNew placeholder={'Location'} icon={'/assets/location.svg'} />
+            <InputNew id={"gstNo"} required={true} value={formState?.gstNo} onChange={handleChange} placeholder={'GST number'} icon={'/assets/gst-no.svg'} />
+            <InputNew id={"location"} required={true} value={formState?.location} onChange={handleChange} placeholder={'Location'} icon={'/assets/location.svg'} />
           </div>
-          <ButtonNew className={'w-40'} text={'Save'} />
+          <ButtonNew type={"submit"} className={'w-40'} text={'Save'} />
         </div>
-      </div>
+      </form>
 
     </LayoutNew>
   )

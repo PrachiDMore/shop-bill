@@ -10,7 +10,8 @@ module.exports = {
         "lightBlue": "#EEFCFF",
         "darkBlue": "#4589B8",
         "mediumBlue": "#01AAE0",
-        "navIcon": "#9FCEEE"
+        "navIcon": "#9FCEEE",
+        "main": "#01AAE0"
       }
     },
   },

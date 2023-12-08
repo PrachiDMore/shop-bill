@@ -23,7 +23,7 @@ const CreateAccount = ({ nav = false }) => {
     })
     .then((res) => {
       localStorage.setItem("token", `${res?.data.token}`);
-      navigate("/dashboard1");
+      navigate("/dashboard");
     })
   }
 
@@ -44,7 +44,7 @@ const CreateAccount = ({ nav = false }) => {
             <ButtonNew text={'Create Account'}/>
             <div className='flex gap-2 justify-center'>
               <p className='text-sm font-semibold'>Already have an account?</p>
-              <Link to={'/login1'} className='text-darkBlue text-sm font-semibold'>Login</Link>
+              <Link to={'/login'} className='text-darkBlue text-sm font-semibold'>Login</Link>
             </div>
           </div>
         </form>

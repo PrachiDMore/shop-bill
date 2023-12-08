@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { AiOutlineClose } from "react-icons/ai";
+import { IoClose } from "react-icons/io5";
 import Input from "../components/Input/Input";
 import { GrAdd, GrLinkNext, GrLinkPrevious } from "react-icons/gr";
 import "./ModalAnimation.css";
@@ -13,6 +13,7 @@ import Spinner from "../components/Spinner";
 import { ToastContainer, toast } from "react-toastify";
 import { ThemeContextAuth } from "../context/ThemeContext";
 import LayoutMain from "../components/layout/LayoutMain";
+import InputNew from "../components/InputNew";
 
 const AddCustomerModal = ({ data, setModal }) => {
   const [showModal, setShowModal] = useState(false);
@@ -111,64 +112,63 @@ const AddCustomerModal = ({ data, setModal }) => {
           timeout={300}
           unmountOnExit
         >
-          <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[100] ">
+          <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[10000] ">
             <div
               className={
-                "relative h-[50vh] w-[90vw] md:w-[50vw]  bg-white rounded-lg "
+                "relative py-5 w-[90vw] md:w-[50vw]  bg-white rounded-lg "
               }
             >
               <div>
                 <form
                   action=""
-                  className={`text-black pt-8 px-5 flex flex-col gap-y-6 justify-center h-full `}
+                  className={`text-black px-5 flex flex-col gap-y-4 justify-center h-full `}
                 >
-                  <button
-                    onClick={closeModal}
-                    className="absolute top-4 right-4 font-bold text-2xl text-red-600"
-                  >
-                    <AiOutlineClose />
-                  </button>
+                  <div className="flex justify-between items-center">
+                    <h4 className="font-bold text-xl">Add Customer</h4>
+                    <button
+                      onClick={closeModal}
+                      className="font-bold text-2xl"
+                    >
+                      <IoClose />
+                    </button>
+                  </div>
 
-                  <Input
+                  <InputNew
                     type={"input"}
                     id={"name"}
                     required={true}
-                    Label={"Customer Name"}
+                    label={"Customer Name"}
                     placeholder={"Enter the Customer Name"}
                     value={customerName}
                     onChange={(e) => {
                       setcustomerName(e.target.value);
                     }}
-                    className={`w-[95%]  
-                  text-black `}
                   />
 
-                  <Input
+                  <InputNew
                     type={"number"}
                     id={"number"}
-                    Label={"Customer Number"}
+                    label={"Customer Number"}
                     placeholder={"Enter the Customer Number"}
                     value={customerNumber}
                     onChange={(e) => {
-                      
-                        setcustomerNumber(e.target.value);
-                      
+                      setcustomerNumber(e.target.value);
                     }}
-                    className={`w-[95%]  text-black `}
                     maxLength={"10"}
                   />
-                  <div className="pt-5  flex justify-center items-center">
+                  <div className="pt-3 w-full  flex justify-center items-center">
                     <button
                       onClick={createCustomer}
-                      className="flex justify-center items-center gap-x-2 bg-blue-600 px-3 py-1.5 rounded-md font-semibold hover:bg-blue-700 shadow hover:shadow-lg duration-150"
+                      className="w-full py-3 px-4 bg-main text-white rounded-md text-center font-semibold"
                     >
                       {!loading ? (
-                        <p className="flex items-center gap-x-1">
-                          {" "}
-                          Next <GrLinkNext />
+                        <p className="flex items-center font-semibold text-center justify-center">
+                          Next
                         </p>
                       ) : (
-                        <Spinner />
+                        <div className="flex justify-center items-center">
+                          <Spinner />
+                        </div>
                       )}
                     </button>
                   </div>
