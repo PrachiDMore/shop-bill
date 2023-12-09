@@ -55,43 +55,36 @@ const PaidModal = ({ setPaidModal, data, billData }) => {
       <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[50000] ">
         <div
           className={
-            "relative h-[30vh] w-[80vw] md:w-[30vw]   bg-white rounded-lg md:h-[35vh]"
+            "relative w-[80vw] md:w-[30vw]   bg-white rounded-lg p-5"
           }
         >
-          <div className="text-end">
-            <button
-              onClick={() => {
-                setPaidModal({ show: false });
-              }}
-              className=" font-bold text-xl bg-red-600 text-white rounded-full px-2 py-0"
-            >
-              x
-            </button>
-          </div>
           <div className="flex justify-center items-center flex-col h-full gap-y-5">
-            <p
-              className={`font-semibold text-base `}
-            >
-              <InputNew
-                type="number"
-                id="paid"
-                label={"Paid Amount"}
-                value={paid}
-                onChange={(e) => {
-                  let finalAmount = billData?.grandtotal - billData?.discount;
-                  let paidValue = Number(e.target.value) + billData?.paid;
-                  if (finalAmount >= paidValue) {
-                    setPaid(Number(e.target.value));
-                  }
-                }}
-              />
-            </p>
-            <div className="flex justify-center items-center gap-x-5">
+            <InputNew
+            className={"w-full"}
+              type="number"
+              id="paid"
+              label={"Paid Amount"}
+              value={paid}
+              onChange={(e) => {
+                let finalAmount = billData?.grandtotal - billData?.discount;
+                let paidValue = Number(e.target.value) + billData?.paid;
+                if (finalAmount >= paidValue) {
+                  setPaid(Number(e.target.value));
+                }
+              }}
+            />
+            <div className="flex justify-between items-center gap-x-5 w-full">
               <button
-                className="font-bold text-xl bg-green-600 text-white py-1.5 px-2 rounded-md w-28 flex justify-center items-center"
+                className="font-bold bg-red-600 text-white py-2 px-2 rounded-md w-1/2 flex justify-center items-center"
+                onClick={() => setPaidModal({ show: false })}
+              >
+                {'Close' }
+              </button>
+              <button
+                className="font-bold bg-main text-white py-2 px-2 rounded-md w-1/2 flex justify-center items-center"
                 onClick={() => PaidAmount(data)}
               >
-                {!loading ? 'Paid' : <Spinner/>}
+                {!loading ? 'Paid' : <Spinner />}
               </button>
             </div>
           </div>
