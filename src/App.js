@@ -28,6 +28,8 @@ import AddBills from './pages/AdminPages/AddBills';
 import ProductsList from './pages/AdminPages/ProductsList';
 import ProductItemDetail from './pages/AdminPages/ProductItemDetail';
 import GetCustomerBills from './pages/AdminPages/GetCustomerBills';
+import GetSingleCustomerBill from './pages/AdminPages/GetSingleCustomerBill';
+import ShowCustomerBills from './pages/AdminPages/ShowCustomerBills';
 
 
 function App() {
@@ -49,12 +51,14 @@ function App() {
               <Route path="/products" element={<Products/>} />
               <Route path="/products-list" element={<ProductsList/>} />
               <Route path="/get-bill" element={<GetBills />} />
+              <Route path="/get-single-bill" element={<GetSingleCustomerBill />} />
               <Route path="/get-bills-all" element={<GetCustomerBills />} />
               <Route path="/darkmode" element={<Card />} />
               <Route path="/add-items" element={<AddItems />} />
               <Route path="/add-bills" element={<AddBills />} />
               <Route path="/invoice/:id" element={<ShowSingleBill />} />
-              <Route path="/customer-details/:id" element={<ShowCustomerDetails />} />
+              {/* <Route path="/customer-details/:id" element={<ShowCustomerDetails />} /> */}
+              <Route path="/customer-details/:id" element={<ShowCustomerBills />} />
               <Route path="/product-details/:id" element={<ProductDetail />} />
               <Route path="/product-item-details/:id" element={<ProductItemDetail />} />
               

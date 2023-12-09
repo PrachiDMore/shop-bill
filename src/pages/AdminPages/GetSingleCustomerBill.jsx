@@ -18,11 +18,11 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import BillPreviewModal from "../../Modal/BillPreviewModal";
 import { ToastContainer, toast } from "react-toastify";
-import InputNew from "../../components/InputNew";
 import LayoutNew from "../../components/layout/LayoutNew";
+import InputNew from "../../components/InputNew";
 
-const GetCustomerBills = () => {
 
+const GetSingleCustomerBill = () => {
   const { setCustomerID, customerID } = ContextAuth();
   const message = "Maggie(8) -40Rs  "; // Replace with your desired message
   const [businessBills, setBusinessBills] = useState([]);
@@ -308,300 +308,114 @@ const GetCustomerBills = () => {
 
   return (
     <>
-      <LayoutNew nav={true}>
-        <Sidebar title={"Bills"} />
-        <div className="px-5 w-screen pt-20 relative z-50">
-          <div className="flex justify-center items-center  mx-auto">
-            <div className="flex-col justify-center items-center">
-              <div className="grid grid-cols-2 gap-x-2 gap-y-3 px-5">
-                {/* <div className="flex flex-col justify-center gap-y-2 w-full"> */}
-                <DatePicker
-                  selected={startDate}
-                  onChange={handleDateChange}
-                  startDate={startDate}
-                  endDate={endDate}
-                  placeholderText="Date Range"
-                  selectsRange
-                  isClearable
-                  dateFormat="dd/MMM/yyyy"
-                  popperPlacement="bottom-start"
-                  className={`flex w-full gap-4 items-center px-4 py-3 rounded-lg shadow-md bg-white`}
-                  renderCustomHeader={({
-                    date,
-                    decreaseMonth,
-                    increaseMonth,
-                  }) => (
-                    <div>
-                      <button onClick={decreaseMonth}>{"<"}</button>
-                      <span>{moment(date).format("MMM yyyy")}</span>
-                      <button onClick={increaseMonth}>{">"}</button>
-                    </div>
-                  )}
-                />
-
-                <InputNew
-                  type="date"
-                  value={selectedDate}
-                  placeholder="Select Date"
-                  onChange={(e) => {
-                    setSelectedDate(e.target.value);
-                  }}
-                  className={`bg-white`}
-                />
-
-                <select
-                  id="filter"
-                  value={filter}
-                  onChange={handleFilterChange}
-                  className="flex gap-4 items-center px-4 py-3 rounded-lg shadow-md bg-white"
-                >
-                  <option
-                    className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                    value="all"
-                  >
-                    All
-                  </option>
-                  <option
-                    className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                    value="today"
-                  >
-                    Today
-                  </option>
-                  <option
-                    className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                    value="yesterday"
-                  >
-                    Yesterday
-                  </option>
-                  <option
-                    className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                    value="lastWeek"
-                  >
-                    Last Week
-                  </option>
-                  <option
-                    className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                    value="lastMonth"
-                  >
-                    Last Month
-                  </option>
-                  <option
-                    className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                    value="lastYear"
-                  >
-                    Last Year
-                  </option>
-                  <option
-                    className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                    value="unpaid"
-                  >
-                    Unpaid
-                  </option>
-                </select>
-
-                <div className="flex items-center px-4 py-3 rounded-lg shadow-md bg-white">
-                  {totalTurnover < 0
-                    ? `TUP: ${Math.abs(totalTurnover)}`
-                    : `TO: ${totalTurnover}`}
-                </div>
-
-              </div>
-
-              {!loading ? (
-                <div ref={contentRef} className="mt-4">
-                  {filterResults?.length > 0 ? (
-                    <div className="md:grid md:grid-cols-2 md:gap-2 md:w-[60vw] h-[68vh] overflow-y-scroll mx-auto grid gap-y-1  md:px-0 w-[100vw] pb-10 px-5">
-                      {filterResults?.map((customer, index) => {
-                        const dateObj = new Date(customer?.createdAt);
-
-                        const day = dateObj.getDate().toString().padStart(2, '0');
-                        const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
-                        const year = dateObj.getFullYear().toString();
-
-                        const formattedDate = `${day}${month}${year}-${index + 1}`;
-
-                        // console.log(customer);
-                        return (
-                          <div className="flex-1">
-                            <CustomerCard
-                              onClick={handleClick}
-                              data={customer}
-                              key={customer?.customerId?._id + index}
-                              name={customer?.customerId?.customerName}
-                              date={dateObj}
-                              amount={customer?.grandtotal}
-                              discount={customer?.discount}
-                              id={customer?.customerId?._id}
-                              // billId={customer?._id}
-                              billId={formattedDate}
-                              mobileNumber={customer?.customerId?.customerNumber}
-                              grandTotal={customer?.grandtotal}
-                              time={moment(customer?.createdAt).format("h:mm a")}
-                              paid={customer?.paid}
-                              div={
-                                <button
-                                  className="bg-main text-white font-bold  p-[6px] rounded-full  flex gap-2 justify-center items-start "
-                                  phoneNumber={customer?.customerNumber}
-                                  message={message}
-                                  onClick={() => {
-                                    handleButtonClick(customer?.customerNumber);
-                                  }}
-                                >
-                                  <BsWhatsapp className="text-2xl"></BsWhatsapp>
-                                </button>
-                              }
-                            />
-                          </div>
-                        );
-                      })}
-                    </div>
-                  ) : (
-                    <div className=" mt-36   px-8 ">
-                      <div className="flex md:justify-around flex-col justify-center items-center md:flex-row">
-                        <div className="w-[40%] md:w-[20%] ">
-                          <img src={noItems} alt="" />
-                        </div>
-
-                        <div
-                          className={`flex flex-col justify-center items-center   ${isDarkMode ? "text-white" : "text-gray-800"
-                            } p-4`}
-                        >
-                          <span className="font-mono  text-center  text-xl">
-                            Oop's! No Data Available.
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <PageLoader className={"h-[60vh]"} />
-              )}
-            </div>
-          </div>
-        </div>
-
-      </LayoutNew>
       <BillPreviewModal
         showModal={showBillPreview}
         setShowModal={setShowBillPreview}
         billID={customerID}
       />
-      {/* <LayoutMain>
-        <Sidebar />
-        <div className=" md:w-[90vw] w-[100vw]  flex justify-center items-center  my-5 mx-auto">
-          <div className="md:w-[100vw] flex-col justify-center items-center">
-            <div className="flex flex-col justify-center gap-y-2 w-full">
-              <div className="flex justify-center gap-x-2 px-2">
-                <div className="w-1/2 md:w-fit">
-                  <DatePicker
-                    selected={startDate}
-                    onChange={handleDateChange}
-                    startDate={startDate}
-                    endDate={endDate}
-                    placeholderText="Date Range"
-                    selectsRange
-                    isClearable
-                    dateFormat="dd/MMM/yyyy"
-                    popperPlacement="bottom-start"
-                    className={`outline-none px-2 py-1.5 border border-gray-300 bg-transparent  shadow-sm shadow-blue-200 rounded-md md:w-40 w-[100%] ${isDarkMode
-                      ? "placeholder-white placeholder:opacity-60"
-                      : "placeholder-gray-500"
-                      }`}
-                    renderCustomHeader={({
-                      date,
-                      decreaseMonth,
-                      increaseMonth,
-                    }) => (
-                      <div>
-                        <button onClick={decreaseMonth}>{"<"}</button>
-                        <span>{moment(date).format("MMM yyyy")}</span>
-                        <button onClick={increaseMonth}>{">"}</button>
-                      </div>
-                    )}
-                  />
-                </div>
+      <LayoutNew nav={true}>
 
-                <div className="w-1/2 md:w-fit">
-                  <InputNew
-                    type="date"
-                    value={selectedDate}
-                    placeholder="Select Date"
-                    onChange={(e) => {
-                      setSelectedDate(e.target.value);
-                    }}
-                    className={`outline-none px-2 py-1.5 border border-gray-300 bg-transparent  shadow-sm shadow-blue-200 rounded-md md:w-40 w-[100%] `}
-                  />
+        <Sidebar title="Get Bills" />
+        <div className="w-screen pt-20 relative z-50 h-[90vh] overflow-y-auto">
+          <div className="grid grid-cols-2 gap-x-2 gap-y-3 px-5">
+            {/* <div className="flex flex-col justify-center gap-y-2 w-full"> */}
+            <DatePicker
+              selected={startDate}
+              onChange={handleDateChange}
+              startDate={startDate}
+              endDate={endDate}
+              placeholderText="Date Range"
+              selectsRange
+              isClearable
+              dateFormat="dd/MMM/yyyy"
+              popperPlacement="bottom-start"
+              className={`flex w-full gap-4 items-center px-4 py-3 rounded-lg shadow-md bg-white`}
+              renderCustomHeader={({
+                date,
+                decreaseMonth,
+                increaseMonth,
+              }) => (
+                <div>
+                  <button onClick={decreaseMonth}>{"<"}</button>
+                  <span>{moment(date).format("MMM yyyy")}</span>
+                  <button onClick={increaseMonth}>{">"}</button>
                 </div>
-              </div>
+              )}
+            />
 
-              <div className="flex justify-center items-center gap-x-2  mb-4 px-2">
-                <div className="w-1/2 md:w-fit">
-                  <select
-                    id="filter"
-                    value={filter}
-                    onChange={handleFilterChange}
-                    className=" outline-none px-2 py-2 border border-gray-300 bg-transparent  shadow-sm shadow-blue-200 rounded-md md:w-40 w-[100%]"
-                  >
-                    <option
-                      className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                      value="all"
-                    >
-                      All
-                    </option>
-                    <option
-                      className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                      value="today"
-                    >
-                      Today
-                    </option>
-                    <option
-                      className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                      value="yesterday"
-                    >
-                      Yesterday
-                    </option>
-                    <option
-                      className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                      value="lastWeek"
-                    >
-                      Last Week
-                    </option>
-                    <option
-                      className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                      value="lastMonth"
-                    >
-                      Last Month
-                    </option>
-                    <option
-                      className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                      value="lastYear"
-                    >
-                      Last Year
-                    </option>
-                    <option
-                      className={` text-${isDarkMode ? "black" : "gray-800"}`}
-                      value="unpaid"
-                    >
-                      Unpaid
-                    </option>
-                  </select>
-                </div>
+            <InputNew
+              type="date"
+              value={selectedDate}
+              placeholder="Select Date"
+              onChange={(e) => {
+                setSelectedDate(e.target.value);
+              }}
+              className={`bg-white`}
+            />
 
-                <div className="border border-gray-300 shadow-sm rounded-md   shadow-blue-200 px-2  w-1/2 md:w-40">
-                  <p className="py-2">
-                    {totalTurnover < 0
-                      ? `TUP: ${Math.abs(totalTurnover)}`
-                      : `TO: ${totalTurnover}`}
-                  </p>
-                </div>
-              </div>
+            <select
+              id="filter"
+              value={filter}
+              onChange={handleFilterChange}
+              className="flex gap-4 items-center px-4 py-3 rounded-lg shadow-md bg-white"
+            >
+              <option
+                className={` text-${isDarkMode ? "black" : "gray-800"}`}
+                value="all"
+              >
+                All
+              </option>
+              <option
+                className={` text-${isDarkMode ? "black" : "gray-800"}`}
+                value="today"
+              >
+                Today
+              </option>
+              <option
+                className={` text-${isDarkMode ? "black" : "gray-800"}`}
+                value="yesterday"
+              >
+                Yesterday
+              </option>
+              <option
+                className={` text-${isDarkMode ? "black" : "gray-800"}`}
+                value="lastWeek"
+              >
+                Last Week
+              </option>
+              <option
+                className={` text-${isDarkMode ? "black" : "gray-800"}`}
+                value="lastMonth"
+              >
+                Last Month
+              </option>
+              <option
+                className={` text-${isDarkMode ? "black" : "gray-800"}`}
+                value="lastYear"
+              >
+                Last Year
+              </option>
+              <option
+                className={` text-${isDarkMode ? "black" : "gray-800"}`}
+                value="unpaid"
+              >
+                Unpaid
+              </option>
+            </select>
+
+            <div className="flex items-center px-4 py-3 rounded-lg shadow-md bg-white">
+              {totalTurnover < 0
+                ? `TUP: ${Math.abs(totalTurnover)}`
+                : `TO: ${totalTurnover}`}
             </div>
 
+          </div>
+
+          <div>
             {!loading ? (
-              <div ref={contentRef} data-aos="flip-right">
+              <div ref={contentRef}>
                 {filterResults?.length > 0 ? (
-                  <div className="md:grid md:grid-cols-2 md:gap-2 md:w-[60vw] mx-auto grid gap-y-1  md:px-0 w-[100vw] pb-10">
+                  <div className="md:grid md:grid-cols-2 md:gap-2 md:w-[60vw] mx-auto grid gap-y-2  md:px-0 h-[60vh] overflow-y-auto w-[100vw] pb-10 px-5 mt-4">
                     {filterResults?.map((customer, index) => {
                       const dateObj = new Date(customer?.createdAt);
                       console.log(index);
@@ -631,7 +445,7 @@ const GetCustomerBills = () => {
                           paid={customer?.paid}
                           div={
                             <button
-                              className="bg-green-500 hover:bg-green-600 text-white font-bold  p-[6px] rounded-full  flex gap-2 justify-center items-start "
+                              className="bg-main text-white font-bold  p-[6px] rounded-full  flex gap-2 justify-center items-start "
                               phoneNumber={customer?.customerNumber}
                               message={message}
                               onClick={() => {
@@ -668,12 +482,13 @@ const GetCustomerBills = () => {
               <PageLoader className={"h-[60vh]"} />
             )}
           </div>
+
         </div>
-        <ToastContainer />
-        <Navigation />
-      </LayoutMain> */}
+      </LayoutNew>
+    
+    
     </>
   );
 };
 
-export default GetCustomerBills;
+export default GetSingleCustomerBill;

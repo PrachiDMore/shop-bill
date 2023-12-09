@@ -23,7 +23,7 @@ const Customers = () => {
   const navigate = useNavigate();
   const { setCustomerdata } = ContextAuth();
 
-  const filterCustomer = allCustomer.filter(
+  const filterCustomer = allCustomer?.filter(
     (allCustomer) =>
       allCustomer.customerName
         .toLowerCase()
@@ -88,7 +88,7 @@ const Customers = () => {
         <div className="px-5 w-screen min-h-screen pt-20 relative z-50">
           <InputNew onChange={handleSearch} className={"bg-white"} placeholder={"Search..."} icon={"/assets/search.svg"} />
           <div className="h-[70vh] relative z-50 flex flex-col gap-y-4 mt-6 overflow-scroll">
-            {filterCustomer.map((customer, index) => (
+            {filterCustomer?.map((customer, index) => (
               <div
                 key={index}
                 className={`bg-white  px-4 py-3 rounded-lg shadow-md border`}

@@ -19,22 +19,20 @@ const LogoutModal = ({ setModel }) => {
       progress: false,
       theme: "light",
     });
-    // window.location.reload();
+    window.location.reload();
     naviGate('/login')
   };
   return (
     <>
-      <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[100] ">
+      <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[20000] ">
         <div
           className={
             "relative h-[25vh] w-[80vw] md:w-[50vw]  bg-white rounded-lg md:h-[50vh]"
           }
         >
-          <div className="flex justify-center items-center flex-col h-full gap-y-5">
+          <div className="flex justify-center items-center flex-col h-full gap-y-5 px-5 text-center">
             <p
-              className={`font-semibold text-base ${
-                isDarkMode ? "text-black" : "text-black"
-              }`}
+              className={`font-semibold text-xl `}
             >
               Are you sure you want to logout ?
             </p>
@@ -43,12 +41,12 @@ const LogoutModal = ({ setModel }) => {
                 onClick={() => {
                   setModel({ show: false });
                 }}
-                className=" font-bold text-xl bg-blue-600 text-white py-1.5 px-2 rounded-md w-28"
+                className=" font-bold bg-blue-600 text-white py-3 rounded-md w-28"
               >
                 Cancel
               </button>
               <button
-                className="font-bold text-xl bg-red-600 text-white py-1.5 px-2 rounded-md w-28"
+                className=" font-bold bg-red-600 text-white py-3 rounded-md w-28"
                 onClick={logout}
               >
                 {" "}

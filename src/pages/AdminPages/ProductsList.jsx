@@ -130,60 +130,6 @@ const ProductsList = () => {
           </div>
         </div>
       </LayoutNew>
-      <LayoutMain>
-        {/* {modal.show && (
-          <AddProductModal
-            data={modal.show && modal.data}
-            setModal={setModal}
-          />
-        )} */}
-        <Sidebar />
-        <Navigation />
-
-        <div className=" md:w-[70vw]  m-auto  flex  justify-center items-center pt-6">
-          <input
-            type="text"
-            id="searchBar"
-            onChange={handleSearch}
-            value={searchProduct}
-            placeholder="Search"
-            // className=""
-            className={` text-${isDarkMode ? "black" : "gray-800"
-              } h-12 w-[90vw] flex justify-center items-center  rounded-lg border-2 border-black pl-2 focus:border-blue-500`}
-          />
-
-          {suggestedProducts.length > 0 && (
-            <ul className="absolute mt-40 w-[90vw] bg-white shadow-md rounded-lg border border-gray-300">
-              {suggestedProducts.map((product) => (
-                <li
-                  key={product._id}
-                  onClick={() => handleSuggestedProductClick(product.ProductName)}
-                  className="px-4 py-2 cursor-pointer hover:bg-gray-100"
-                >
-                  {product.ProductName}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-        <div className=" flex justify-center items-center h-[70vh] overflow-hidden ">
-
-          <button
-            onClick={() => {
-              setModal({ show: true });
-            }}
-            className={`   text-6xl p-2   rounded-full   ${isDarkMode ? "text-white" : "text-black"
-              }`}
-          >
-            <RiAddCircleFill />
-          </button>
-
-        </div>
-
-
-
-      </LayoutMain>
     </>
   );
 }

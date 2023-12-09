@@ -92,7 +92,7 @@ const CustomerCard = ({
         </div>
 
         <div
-          className="w-12/12 bg-green-500 flex justify-center items-center rounded-md hover:bg-green-600 gap-4 cursor-pointer"
+          className="w-12/12 bg-main flex justify-center items-center rounded-md gap-4 cursor-pointer"
           onClick={() => {
             onClick(billId);
           }}

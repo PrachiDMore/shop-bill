@@ -6,6 +6,7 @@ import { ThemeContextAuth } from "../context/ThemeContext";
 import { ContextAuth } from "../context/Context";
 import axios from "axios";
 import Spinner from '../components/Spinner'
+import InputNew from "../components/InputNew";
 const PaidModal = ({ setPaidModal, data, billData }) => {
   const { paid, setPaid, savePaid } = ContextAuth();
   const [loading, setLoading] = useState(false);
@@ -51,7 +52,7 @@ const PaidModal = ({ setPaidModal, data, billData }) => {
   };
   return (
     <>
-      <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[100] ">
+      <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[50000] ">
         <div
           className={
             "relative h-[30vh] w-[80vw] md:w-[30vw]   bg-white rounded-lg md:h-[35vh]"
@@ -69,14 +70,12 @@ const PaidModal = ({ setPaidModal, data, billData }) => {
           </div>
           <div className="flex justify-center items-center flex-col h-full gap-y-5">
             <p
-              className={`font-semibold text-base  ${
-                isDarkMode ? "text-black" : "text-black"
-              }`}
+              className={`font-semibold text-base `}
             >
-              <label htmlFor=""> Paid Amount:</label>
-              <input
+              <InputNew
                 type="number"
                 id="paid"
+                label={"Paid Amount"}
                 value={paid}
                 onChange={(e) => {
                   let finalAmount = billData?.grandtotal - billData?.discount;
@@ -85,7 +84,6 @@ const PaidModal = ({ setPaidModal, data, billData }) => {
                     setPaid(Number(e.target.value));
                   }
                 }}
-                className="border-2 border-gray-400 rounded-md w-20 text-black"
               />
             </p>
             <div className="flex justify-center items-center gap-x-5">

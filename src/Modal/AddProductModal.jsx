@@ -237,7 +237,7 @@ const AddProductModal = ({ data, setModal, modal }) => {
                     >
                       {!loading ? (
                         <p className="flex items-center font-semibold text-center justify-center">
-                          Next
+                          Close
                         </p>
                       ) : (
                         <div className="flex justify-center items-center">
