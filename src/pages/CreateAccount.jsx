@@ -22,13 +22,13 @@ const CreateAccount = ({ nav = false }) => {
       }
     })
     .then((res) => {
-      localStorage.setItem("token", `${res?.data.token}`);
       navigate("/dashboard");
+      // localStorage.setItem("token", `${res?.data.token}`);
     })
   }
 
   return (
-    <LayoutNew>
+    <LayoutNew nav={false}>
       <div className='w-screen min-h-screen flex flex-col lg:gap-8 gap-10 pt-12 relative z-10'>
         <div className='w-screen flex justify-center'>
         <img className='w-28 h-28' src="/logo.png" alt="" />
