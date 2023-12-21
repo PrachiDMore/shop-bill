@@ -4,6 +4,7 @@ import InputNew from '../components/InputNew'
 import { Link, useNavigate } from 'react-router-dom'
 import ButtonNew from '../components/Button/ButtonNew'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const CreateAccount = ({ nav = false }) => {
   const [username, setUsername] = useState('')
@@ -24,6 +25,7 @@ const CreateAccount = ({ nav = false }) => {
     .then((res) => {
       localStorage.setItem("token", `${res?.data.token}`);
       navigate("/dashboard");
+      toast.success("Success")
     })
   }
 

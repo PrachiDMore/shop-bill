@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import ButtonNew from '../components/Button/ButtonNew'
 import { useState } from 'react'
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 const LoginNew = ({ nav = false }) => {
   const [username, setUsername] = useState('')
@@ -21,6 +22,7 @@ const LoginNew = ({ nav = false }) => {
       }
     })
     .then((res) => {
+      toast.success("Success")
       localStorage.setItem("token", `${res?.data.token}`);
       navigate("/dashboard");
     })
