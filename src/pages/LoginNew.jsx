@@ -21,9 +21,8 @@ const LoginNew = ({ nav = false }) => {
       }
     })
     .then((res) => {
-      console.log(res.data)
-      // localStorage.setItem("token", `${res?.data.token}`);
-      // navigate("/dashboard");
+      localStorage.setItem("token", `${res?.data.token}`);
+      navigate("/dashboard");
     })
   }
 

@@ -22,8 +22,8 @@ const CreateAccount = ({ nav = false }) => {
       }
     })
     .then((res) => {
-      navigate("/dashboard");
       localStorage.setItem("token", `${res?.data.token}`);
+      navigate("/dashboard");
     })
   }
 
