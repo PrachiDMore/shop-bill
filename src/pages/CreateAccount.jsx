@@ -23,7 +23,7 @@ const CreateAccount = ({ nav = false }) => {
     })
     .then((res) => {
       navigate("/dashboard");
-      // localStorage.setItem("token", `${res?.data.token}`);
+      localStorage.setItem("token", `${res?.data.token}`);
     })
   }
 
@@ -36,7 +36,7 @@ const CreateAccount = ({ nav = false }) => {
         <h1 className='w-screen text-center text-2xl font-extrabold text-darkBlue'>Create account</h1>
         <form onSubmit={handleSubmit} className='w-screen lg:px-96 px-7 grid gap-10'>
           <div className='grid gap-6'>
-            <InputNew value={username} onChange={(e) => setUsername(e.target.value)} icon={'/assets/user.svg'} placeholder={'Email or Username'} type={"text"} />
+            <InputNew value={username} onChange={(e) => setUsername(e.target.value)} icon={'/assets/user.svg'} placeholder={'Username'} type={"text"} />
             <InputNew value={phoneNo} onChange={(e) => setPhoneNo(e.target.value)} icon={'/assets/phone.svg'} placeholder={'Phone number'} type={"text"} />
             <InputNew value={password} onChange={(e) => setPassword(e.target.value)} icon={'/assets/password1.svg'} placeholder={'Password'} type={"password"} />
           </div>

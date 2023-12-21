@@ -95,8 +95,8 @@ const MainNew = () => {
         },
       })
         .then((res) => {
-          console.log(res.data)
           const response = res.data.response[0];
+          console.log(response)
           setformState(response);
           setBusiness(response);
           if (

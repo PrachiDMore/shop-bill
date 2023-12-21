@@ -329,7 +329,7 @@ const GetSingleCustomerBill = () => {
               isClearable
               dateFormat="dd/MMM/yyyy"
               popperPlacement="bottom-start"
-              className={`flex w-full gap-4 items-center px-4 py-3 rounded-lg shadow-md bg-white`}
+              className={`flex w-full gap-4 items-center px-4 py-3 rounded-lg shadow-md dark:bg-white/10 bg-white`}
               renderCustomHeader={({
                 date,
                 decreaseMonth,
@@ -357,7 +357,7 @@ const GetSingleCustomerBill = () => {
               id="filter"
               value={filter}
               onChange={handleFilterChange}
-              className="flex gap-4 items-center px-4 py-3 rounded-lg shadow-md bg-white"
+              className="flex gap-4 items-center px-4 py-3 rounded-lg shadow-md dark:bg-white/10 bg-white"
             >
               <option
                 className={` text-${isDarkMode ? "black" : "gray-800"}`}
@@ -403,7 +403,7 @@ const GetSingleCustomerBill = () => {
               </option>
             </select>
 
-            <div className="flex items-center px-4 py-3 rounded-lg shadow-md bg-white">
+            <div className="flex items-center px-4 py-3 rounded-lg shadow-md dark:bg-white/10 bg-white">
               {totalTurnover < 0
                 ? `TUP: ${Math.abs(totalTurnover)}`
                 : `TO: ${totalTurnover}`}
@@ -415,7 +415,7 @@ const GetSingleCustomerBill = () => {
             {!loading ? (
               <div ref={contentRef}>
                 {filterResults?.length > 0 ? (
-                  <div className="md:grid md:grid-cols-2 md:gap-2 md:w-[60vw] mx-auto grid gap-y-2  md:px-0 h-[60vh] overflow-y-auto w-[100vw] pb-10 px-5 mt-4">
+                  <div className="md:grid md:grid-cols-2 md:gap-2 md:w-[60vw] mx-auto grid gap-y-2  md:px-0 overflow-y-auto w-[100vw] pb-10 px-5 mt-4">
                     {filterResults?.map((customer, index) => {
                       const dateObj = new Date(customer?.createdAt);
                       console.log(index);

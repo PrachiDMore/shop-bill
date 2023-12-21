@@ -115,7 +115,7 @@ const ProductsList = () => {
               suggestedProducts.map((product) => {
                 return <div onClick={() => {
                   setModal({show: true, update: true, data: product})
-                }} className="px-5 py-3 rounded-lg bg-white shadow-md">
+                }} className="px-5 py-3 rounded-lg dark:bg-white/10 bg-white shadow-md">
                   <div className="flex justify-between items-center">
                     <h4 className="font-bold text-xl">{product?.ProductName}</h4>
                     <p className="text-xl font-bold">₹{product?.ProductPrice}</p>

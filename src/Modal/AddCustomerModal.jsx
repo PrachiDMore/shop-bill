@@ -60,7 +60,7 @@ const AddCustomerModal = ({ data, setModal }) => {
             const customerId = res.data.customer._id;
             setCustomerdata(customerId);
 
-            navigate("/add-items");
+            navigate("/add-bills");
             // console.log(res.data.token);
             setLoading(false);
           })
@@ -115,13 +115,13 @@ const AddCustomerModal = ({ data, setModal }) => {
           <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[10000] ">
             <div
               className={
-                "relative py-5 w-[90vw] md:w-[50vw]  bg-white rounded-lg "
+                "relative py-5 w-[90vw] md:w-[50vw]  bg-white dark:bg-white/10 rounded-lg "
               }
             >
               <div>
                 <form
                   action=""
-                  className={`text-black px-5 flex flex-col gap-y-4 justify-center h-full `}
+                  className={`dark:text-white text-black px-5 flex flex-col gap-y-4 justify-center h-full `}
                 >
                   <div className="flex justify-between items-center">
                     <h4 className="font-bold text-xl">Add Customer</h4>

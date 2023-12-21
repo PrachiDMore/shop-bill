@@ -244,7 +244,7 @@ const ShowCustomerBills = () => {
               id="filter"
               value={filter}
               onChange={handleFilterChange}
-              className="flex w-full gap-4 items-center px-4 py-3 rounded-lg shadow-md bg-white "
+              className="flex w-full gap-4 items-center px-4 py-3 rounded-lg shadow-md dark:bg-white/10 bg-white "
             >
               <option
                 className={`  ${isDarkMode
@@ -332,7 +332,7 @@ const ShowCustomerBills = () => {
                           className="text-sm font-semibold flex justify-center "
                         >
                           <div
-                            className={`flex    duration-200 justify-center items-center py-3 px-2 gap-x-2  hover:shadow-md  shadow-sm shadow-blue-200 outline-none  border border-gray-300 bg-transparent   hover:shadow-blue-200 rounded-md w-full cursor-pointer   ${isDarkMode
+                            className={`flex    duration-200 justify-center items-center py-3 px-2 gap-x-2  shadow-sm shadow-blue-200 outline-none  border border-gray-300 bg-transparenthover:shadow-blue-200 rounded-md w-full cursor-pointer   ${isDarkMode
                               ? "hover:border-white"
                               : "hover:border-black"
                               }`}
@@ -355,7 +355,7 @@ const ShowCustomerBills = () => {
                                 value?.paid ? (
                                 <div>
                                   <p>
-                                    <IoCheckmarkDoneCircle className="text-green-500 text-xl"></IoCheckmarkDoneCircle>
+                                    <IoCheckmarkDoneCircle className="text-green-500 text-xl"/>
                                   </p>
                                 </div>
                               ) : (

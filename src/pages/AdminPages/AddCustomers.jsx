@@ -53,7 +53,7 @@ const AddCustomers = () => {
         .then((res) => {
           setAllCustomer(res?.data?.response);
         })
-        .catch((err) =>{
+        .catch((err) => {
           alert(err?.message);
         });
     } catch (err) {
@@ -80,7 +80,7 @@ const AddCustomers = () => {
         )}
         <Sidebar />
         {/* <Navigation /> */}
-        <BottomNavbar/>
+        <BottomNavbar />
         <p className="w-full text-center text-xl font-bold">Customer</p>
         <div className=" md:w-[70vw]  m-auto  flex  justify-center items-center pt-6">
           <input
@@ -90,9 +90,8 @@ const AddCustomers = () => {
             value={searchCustomer}
             placeholder="Search"
             // className=""
-            className={` text-${
-              isDarkMode ? "black" : "gray-800"
-            } h-12 w-[90vw] flex justify-center items-center  rounded-lg border-2 border-black pl-2 focus:border-blue-500`}
+            className={` text-${isDarkMode ? "black" : "gray-800"
+              } h-12 w-[90vw] flex justify-center items-center  rounded-lg border-2 border-black pl-2 focus:border-blue-500`}
           />
         </div>
 
@@ -101,56 +100,53 @@ const AddCustomers = () => {
             {filterCustomer.map((customer, index) => (
               <div
                 key={index}
-                className={`bg-${isDarkMode ? "blue-200" : "cyan-50"} text-${
-                  isDarkMode ? "white" : "gray-800"
-                } p-4 rounded-lg  shadow-md shadow-blue-300 transform  perspective-100    overflow-hidden border m-2`}
-              >
-                <div className=" py-2 gap-y-4 flex flex-col justify-center items-center w-[100%] ">
-                  <div className="flex justify-between items-center gap-x-6 w-[100%]">
-                    <div className="font-semibold  ">
-                      {customer?.customerName}
-                    </div>
-
-                    <p className=" font-semibold ">
-                      {customer?.customerNumber}
-                    </p>
-                  </div>
-
-                  <div className="flex justify-between w-[100%]">
-                    <button
-                      onClick={() => {
-                        handleCardClick(customer?._id);
-                      }}
-                      className=" py-1.5 px-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-fit"
-                    >
-                      Generate Bill
-                    </button>
-                    <Link
-                      to={`/customer-details/${customer?._id}`}
-                      className=" py-1.5 px-2  bg-blue-500 text-white rounded-md hover:bg-blue-600 "
-                    >
-                      View Bills
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className=" flex justify-center items-center h-[70vh] overflow-hidden ">
-            <button
-              onClick={() => {
-                setModal({ show: true });
-              }}
-              className={`   text-6xl p-2   rounded-full   ${
-                isDarkMode ? "text-white" : "text-black"
-              }`}
+                className={"p-4 rounded-lg shadow-md shadow-blue-300 transform perspective-100 overflow-hidden border m-2 bg-white dark:bg-white/10"}
             >
-              <AiOutlineUserAdd className="text-darkBlue"/>
-            </button>
-          </div>
+            <div className=" py-2 gap-y-4 flex flex-col justify-center items-center w-[100%] ">
+              <div className="flex justify-between items-center gap-x-6 w-[100%]">
+                <div className="font-semibold  ">
+                  {customer?.customerName}
+                </div>
+
+                <p className=" font-semibold ">
+                  {customer?.customerNumber}
+                </p>
+              </div>
+
+              <div className="flex justify-between w-[100%]">
+                <button
+                  onClick={() => {
+                    handleCardClick(customer?._id);
+                  }}
+                  className=" py-1.5 px-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 w-fit"
+                >
+                  Generate Bill
+                </button>
+                <Link
+                  to={`/customer-details/${customer?._id}`}
+                  className=" py-1.5 px-2  bg-blue-500 text-white rounded-md hover:bg-blue-600 "
+                >
+                  View Bills
+                </Link>
+              </div>
+            </div>
+              </div>
+        ))}
+      </div>
+      ) : (
+      <div className=" flex justify-center items-center h-[70vh] overflow-hidden ">
+        <button
+          onClick={() => {
+            setModal({ show: true });
+          }}
+          className={`   text-6xl p-2   rounded-full   ${isDarkMode ? "text-white" : "text-black"
+            }`}
+        >
+          <AiOutlineUserAdd className="text-darkBlue" />
+        </button>
+      </div>
         )}
-      </LayoutMain>
+    </LayoutMain >
     </>
   );
 };

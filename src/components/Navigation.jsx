@@ -43,9 +43,7 @@ const Navigation = ({ className }) => {
                 to={obj.route}
                 key={index}
                 className={
-                  obj.route === loaction.pathname
-                    ? // ? "flex flex-center md:items-center md:justify-center text-center md:w-4/12 pt-1 text-black text-sm font-semibold rounded-lg ${className}"
-                    `flex flex-center md:items-center md:justify-center text-center md:w-4/12 pt-1  text-sm font-semibold rounded-lg  ${isDarkMode ? "text-black " : "text-darkBlue "} ` : "flex flex-center md:items-center md:justify-center text-center md:w-4/12 pt-1 text-sm "
+                  obj.route === loaction.pathname ? `flex flex-center md:items-center md:justify-center text-center md:w-4/12 pt-1  text-sm font-semibold rounded-lg ` : "flex flex-center md:items-center md:justify-center text-center md:w-4/12 pt-1 text-sm "
                 }
               >
                 {obj.icon}

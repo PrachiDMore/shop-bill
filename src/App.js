@@ -46,7 +46,7 @@ function App() {
               <Route path="/verify" element={<VerifyOTP />} />
               {/* <Route path="/dashboard" element={<Main />} /> */}
               <Route path="/dashboard" element={<MainNew />} />
-              <Route path="/add-customer" element={<AddCustomers />} />
+              {/* <Route path="/add-customer" element={<AddCustomers />} /> */}
               <Route path="/customers" element={<Customers />} />
               <Route path="/products" element={<Products/>} />
               <Route path="/products-list" element={<ProductsList/>} />
@@ -54,7 +54,7 @@ function App() {
               <Route path="/get-single-bill" element={<GetSingleCustomerBill />} />
               <Route path="/get-bills-all" element={<GetCustomerBills />} />
               <Route path="/darkmode" element={<Card />} />
-              <Route path="/add-items" element={<AddItems />} />
+              {/* <Route path="/add-items" element={<AddItems />} /> */}
               <Route path="/add-bills" element={<AddBills />} />
               <Route path="/invoice/:id" element={<ShowSingleBill />} />
               {/* <Route path="/customer-details/:id" element={<ShowCustomerDetails />} /> */}

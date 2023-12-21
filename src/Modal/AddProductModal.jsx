@@ -145,14 +145,14 @@ const AddProductModal = ({ data, setModal, modal }) => {
 
             <div
               className={
-                "relative py-5 w-[90vw] md:w-[50vw]  bg-white rounded-lg "
+                "relative py-5 w-[90vw] md:w-[50vw]  dark:bg-white/10 bg-white rounded-lg "
               }
             >
 
               <div>
                 <form
                   action=""
-                  className={`text-black px-5 flex flex-col gap-y-4 justify-center  `}
+                  className={`dark:text-white text-black px-5 flex flex-col gap-y-4 justify-center  `}
                 >
                   <div className="flex justify-between items-center">
                     <h4 className="font-bold text-xl">{!modal?.update ? "Add Product" : "Product Details"}</h4>

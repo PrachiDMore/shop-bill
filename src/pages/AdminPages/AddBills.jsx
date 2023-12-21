@@ -276,12 +276,12 @@ const AddBills = () => {
             <div className="relative">
               <InputNew value={searchProduct} onChange={handleSearch} placeholder={"Enter Items"} className={"bg-white px-2"} />
               {suggestedProducts.length > 0 && (
-                <ul className="absolute mt-0 w-full bg-white shadow-md rounded-lg border border-gray-300">
+                <ul className="absolute mt-0 w-full dark:bg-black/90 bg-white shadow-md rounded-lg border border-gray-300">
                   {suggestedProducts.map((product) => (
                     <li
                       key={product._id}
                       onClick={() => handleSuggestedProductClick(product.ProductName)}
-                      className="px-4 py-2 cursor-pointer hover:bg-gray-100"
+                      className="px-4 py-2 cursor-pointer dark:bg-white/10"
                     >
                       {product.ProductName}
                     </li>
@@ -291,9 +291,9 @@ const AddBills = () => {
             </div>
 
             {/* Quantity */}
-            <div className={'flex w-full items-center py-3 rounded-lg shadow-md bg-white px-2 '} >
-              <input value={qty} onChange={handleQtyChange} className='placeholder:text-sm outline-none bg-white px-2 w-6/12' type={"number"} placeholder={"Enter Quantity"} />
-              <select value={selectedUnit} onChange={handleUnitChange} className="w-6/12 text-sm bg-transparent outline-none">
+            <div className={'flex w-full items-center py-3 rounded-lg shadow-md dark:bg-white/10 bg-white px-2 '} >
+              <input value={qty} onChange={handleQtyChange} className='placeholder:text-sm outline-none bg-transparent px-2 w-full' type={"number"} placeholder={"Enter Quantity"} />
+              <select value={selectedUnit} onChange={handleUnitChange} className="w-6/12 text-sm bg-transparent outline-none dark:text-white">
                 <option value="piece">Piece</option>
                 <option value="kg">Kg</option>
                 <option value="gm">Gm</option>
@@ -303,8 +303,8 @@ const AddBills = () => {
             <InputNew type="number" value={individualPrice} onChange={handlePriceChange} className={"bg-white px-2"} />
 
             {/* Total */}
-            <div className={'flex w-full items-center py-3 rounded-lg shadow-md bg-white px-2 '} >
-              <input onKeyDown={handleTotalSave} className='placeholder:text-sm outline-none bg-white px-2' type={"number"} onChange={(e) => setTotal(e.target.value)} id={"total"} value={total} placeholder={"Total"} />
+            <div className={'flex w-full items-center py-3 rounded-lg shadow-md dark:bg-white/10 bg-white px-2 '} >
+              <input onKeyDown={handleTotalSave} className='placeholder:text-sm outline-none bg-transparent px-2' type={"number"} onChange={(e) => setTotal(e.target.value)} id={"total"} value={total} placeholder={"Total"} />
             </div>
 
           </div>

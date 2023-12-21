@@ -26,7 +26,7 @@ const Login = () => {
       e.preventDefault();
       try {
         await axios(
-          "https://khatabook-one.vercel.app/sendotp",
+          "https://khatabook-one.vercel.app/signin",
 
           {
             method: "POST",

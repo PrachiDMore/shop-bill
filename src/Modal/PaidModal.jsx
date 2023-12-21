@@ -55,12 +55,11 @@ const PaidModal = ({ setPaidModal, data, billData }) => {
       <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[50000] ">
         <div
           className={
-            "relative w-[80vw] md:w-[30vw]   bg-white rounded-lg p-5"
+            "relative w-[80vw] md:w-[30vw] dark:bg-white/10 bg-white rounded-lg p-5"
           }
         >
-          <div className="flex justify-center items-center flex-col h-full gap-y-5">
+          <div className="flex justify-center items-center flex-col h-full gap-y-5 w-full">
             <InputNew
-            className={"w-full"}
               type="number"
               id="paid"
               label={"Paid Amount"}
@@ -78,7 +77,7 @@ const PaidModal = ({ setPaidModal, data, billData }) => {
                 className="font-bold bg-red-600 text-white py-2 px-2 rounded-md w-1/2 flex justify-center items-center"
                 onClick={() => setPaidModal({ show: false })}
               >
-                {'Close' }
+                {'Close'}
               </button>
               <button
                 className="font-bold bg-main text-white py-2 px-2 rounded-md w-1/2 flex justify-center items-center"

@@ -13,27 +13,47 @@ const BottomNavbar = () => {
       <Link to={'/dashboard'}>
         {/* <AiOutlineHome className="font-extrabold text-navIcon text-3xl" /> */}
         {
-          location.pathname === "/dashboard" ? <img src="/assets/navigation-icons/home-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/home.svg" className='object-cover' alt="" />
+          <img src="/assets/navigation-icons/home.svg" className='object-cover' alt="" />
         }
       </Link>
       <Link to={'/customers'}>
         {/* <AiOutlineUser className="font-extrabold text-navIcon text-3xl" /> */}
         {
-          location.pathname === "/customers" ? <img src="/assets/navigation-icons/user-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/user.svg" className='object-cover' alt="" />
+          <img src="/assets/navigation-icons/user.svg" className='object-cover' alt="" />
         }
       </Link>
       <Link to={'/products-list'}>
         {/* <BsBox className="font-extrabold text-navIcon text-3xl" /> */}
         {
-          location.pathname === "/products-list" ? <img src="/assets/navigation-icons/box-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/box.svg" className='object-cover' alt="" />
+          <img src="/assets/navigation-icons/box.svg" className='object-cover' alt="" />
         }
       </Link>
       <Link to={'/get-bills-all'}>
         {/* <LuIndianRupee className="font-extrabold text-navIcon text-3xl" /> */}
         {
-          location.pathname === "/get-bills-all" ? <img src="/assets/navigation-icons/bill-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/bill.svg" className='object-cover' alt="" />
+           <img src="/assets/navigation-icons/bill.svg" className='object-cover' alt="" />
         }
       </Link>
+      {/* <Link to={'/dashboard'}>
+        {
+          location.pathname !== "/dashboard" ? <img src="/assets/navigation-icons/home-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/home.svg" className='object-cover' alt="" />
+        }
+      </Link> */}
+      {/* <Link to={'/customers'}>
+        {
+          location.pathname !== "/customers" ? <img src="/assets/navigation-icons/user-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/user.svg" className='object-cover' alt="" />
+        }
+      </Link> */}
+      {/* <Link to={'/products-list'}>
+        {
+          location.pathname !== "/products-list" ? <img src="/assets/navigation-icons/box-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/box.svg" className='object-cover' alt="" />
+        }
+      </Link> */}
+      {/* <Link to={'/get-bills-all'}>
+        {
+          location.pathname !== "/get-bills-all" ? <img src="/assets/navigation-icons/bill-active.svg" className='object-cover' alt="" /> : <img src="/assets/navigation-icons/bill.svg" className='object-cover' alt="" />
+        }
+      </Link> */}
     </div>
   )
 }

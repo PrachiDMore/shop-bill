@@ -86,12 +86,12 @@ const Customers = () => {
         }
         <Sidebar title={"Customers"} />
         <div className="px-5 w-screen min-h-screen pt-20 relative z-50">
-          <InputNew onChange={handleSearch} className={"bg-white"} placeholder={"Search..."} icon={"/assets/search.svg"} />
+          <InputNew onChange={handleSearch} className="bg-white" placeholder={"Search..."} icon={"/assets/search.svg"} />
           <div className="h-[70vh] relative z-50 flex flex-col gap-y-4 mt-6 overflow-scroll">
             {filterCustomer?.map((customer, index) => (
               <div
                 key={index}
-                className={`bg-white  px-4 py-3 rounded-lg shadow-md border`}
+                className={`dark:bg-white/10 bg-white  px-4 py-3 rounded-lg shadow-md border`}
               >
                 <div className="gap-y-3 flex flex-col justify-center items-center w-[100%] ">
                   <div className="flex flex-col gap-x-6 w-[100%]">

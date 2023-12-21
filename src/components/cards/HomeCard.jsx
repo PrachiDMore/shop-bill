@@ -45,7 +45,7 @@ const CustomerCard = ({
   return (
     <>
       <div
-        className={`bg-white text-gray-800 p-4 rounded-lg  shadow-md  transform  perspective-100  hover:shadow-lg  overflow-hidden border`}
+        className={`dark:bg-white/10 bg-white dark:text-white text-gray-800 p-4 rounded-lg  shadow-md  transform  perspective-100  hover:shadow-lg  overflow-hidden border`}
       >
         <div className="flex justify-between items-center gap-x-2 ">
           <p className="font-medium ">Total: Rs {amount - discount}</p>

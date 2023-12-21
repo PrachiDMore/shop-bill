@@ -26,7 +26,7 @@ useEffect(() => {
 
   return (
     <ThemeContext.Provider value={{ isDarkMode, toggleMode }}>
-      <div className={`theme-${isDarkMode ? "dark" : "light"}`}>{children}</div>
+      <div className={`${isDarkMode ? "dark" : "light"}`}>{children}</div>
     </ThemeContext.Provider>
   );
 };

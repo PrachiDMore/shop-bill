@@ -27,7 +27,7 @@ const LogoutModal = ({ setModel }) => {
       <div className="h-screen w-screen bg-black bg-opacity-70 flex items-center justify-center fixed top-0 left-0 shadow-lg z-[20000] ">
         <div
           className={
-            "relative h-[25vh] w-[80vw] md:w-[50vw]  bg-white rounded-lg md:h-[50vh]"
+            "relative h-[25vh] w-[80vw] md:w-[50vw]  dark:bg-gray-900 bg-white rounded-lg md:h-[50vh]"
           }
         >
           <div className="flex justify-center items-center flex-col h-full gap-y-5 px-5 text-center">

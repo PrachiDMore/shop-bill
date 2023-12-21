@@ -325,7 +325,7 @@ const GetCustomerBills = () => {
                   isClearable
                   dateFormat="dd/MMM/yyyy"
                   popperPlacement="bottom-start"
-                  className={`flex w-full gap-4 items-center px-4 py-3 rounded-lg shadow-md bg-white`}
+                  className={`flex w-full gap-4 items-center px-4 py-3 rounded-lg shadow-md dark:bg-white/10 bg-white`}
                   renderCustomHeader={({
                     date,
                     decreaseMonth,
@@ -346,14 +346,14 @@ const GetCustomerBills = () => {
                   onChange={(e) => {
                     setSelectedDate(e.target.value);
                   }}
-                  className={`bg-white`}
+                  className={`dark:bg-white/10 bg-white`}
                 />
 
                 <select
                   id="filter"
                   value={filter}
                   onChange={handleFilterChange}
-                  className="flex gap-4 items-center px-4 py-3 rounded-lg shadow-md bg-white"
+                  className="flex gap-4 items-center px-4 py-3 rounded-lg shadow-md dark:bg-white/10 bg-white"
                 >
                   <option
                     className={` text-${isDarkMode ? "black" : "gray-800"}`}
@@ -399,18 +399,17 @@ const GetCustomerBills = () => {
                   </option>
                 </select>
 
-                <div className="flex items-center px-4 py-3 rounded-lg shadow-md bg-white">
+                <div className="flex items-center px-4 py-3 rounded-lg shadow-md dark:bg-white/10 bg-white">
                   {totalTurnover < 0
                     ? `TUP: ${Math.abs(totalTurnover)}`
                     : `TO: ${totalTurnover}`}
                 </div>
-
               </div>
 
               {!loading ? (
                 <div ref={contentRef} className="mt-4">
                   {filterResults?.length > 0 ? (
-                    <div className="md:grid md:grid-cols-2 md:gap-2 md:w-[60vw] h-[68vh] overflow-y-scroll mx-auto grid gap-y-1  md:px-0 w-[100vw] pb-10 px-5">
+                    <div className="md:grid md:grid-cols-2 md:gap-2 md:w-[60vw] overflow-y-scroll mx-auto grid gap-y-3 md:px-0 w-[100vw] pb-10 px-5">
                       {filterResults?.map((customer, index) => {
                         const dateObj = new Date(customer?.createdAt);
 
@@ -420,7 +419,6 @@ const GetCustomerBills = () => {
 
                         const formattedDate = `${day}${month}${year}-${index + 1}`;
 
-                        // console.log(customer);
                         return (
                           <div className="flex-1">
                             <CustomerCard

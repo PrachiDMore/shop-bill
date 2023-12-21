@@ -43,36 +43,27 @@ const Sidebar = ({ title, back }) => {
   return (
     <>
       {modal.show && <LogoutModal data={modal.show} setModel={setModal} />}
-      {back ? <div className="h-16 absolute top-0 left-0 z-50 w-full transition duration-300 ease-in-out ">
-        {/* <div className=""> */}
-        <div className={`  ${isDarkMode ? " text-black" : "text-gray-800"} flex justify-between items-center h-16 px-4 `} >
+      {back ? <div className="h-16 absolute top-0 left-0 z-[80] w-full transition duration-300 ease-in-out ">
+        <div className={` dark:text-white text-black flex justify-between items-center h-16 px-4 `} >
           <button onClick={back} className={`flex justify-center items-center rounded-full p-2`} >
-            <BiArrowBack className="text-xl text-black" />
+            <BiArrowBack className="text-xl dark:text-white text-black" />
           </button>
-
           <div className={`   font-semibold  text-xl ${isDarkMode ? " text-white" : " text-gray-800"} `} > {title} </div>
-
-          <button onClick={() => { setModal({ show: true }); }} className={`flex justify-center items-center rounded-full p-2 text-white`} >
-            <GrPowerShutdown />
+          <button onClick={() => { setModal({ show: true }); }} className={`flex justify-center items-center rounded-full p-2 dark:text-white text-black`} >
+            <GrPowerShutdown className="dark:text-white text-black" />
           </button>
-          <button className={`hidden rounded-full p-2   ${isDarkMode ? " text-white" : " text-black"} `} >
-            {isDarkMode ? <BsSun className="" /> : <MdOutlineDarkMode />}
+          <button className={`hidden rounded-full p-2 `} onClick={() => toggleMode()}>
+            {isDarkMode ? <BsSun className="dark:text-white text-black" /> : <MdOutlineDarkMode className="dark:text-white text-black" />}
           </button>
         </div>
-      </div> : <div className="h-16 absolute top-0 left-0 z-50 w-full transition duration-300 ease-in-out ">
-        {/* <div className=""> */}
-        <div className={`  ${isDarkMode ? " text-black" : "text-gray-800"} flex justify-between items-center h-16 px-4 `} >
-          <button onClick={() => { setModal({ show: true }); }} className={`flex justify-center items-center rounded-full p-2 text-white`} >
-            <GrPowerShutdown />
+      </div> : <div className="h-16 absolute top-0 left-0 z-[80] w-full transition duration-300 ease-in-out ">
+        <div className={`  flex justify-between items-center h-16 px-4 `} >
+          <button onClick={() => { setModal({ show: true }); }} className={`flex justify-center items-center rounded-full p-2 dark:text-white text-black`} >
+            <GrPowerShutdown className="dark:text-white text-black" />
           </button>
-
           <div className={`   font-semibold  text-xl ${isDarkMode ? " text-white" : " text-gray-800"} `} > {title} </div>
-
-          <button className={`opacity-0 pointer-events-none flex justify-center items-center rounded-full p-2 text-white`} >
-            <GrPowerShutdown />
-          </button>
-          <button className={`hidden rounded-full p-2   ${isDarkMode ? " text-white" : " text-black"} `} >
-            {isDarkMode ? <BsSun className="" /> : <MdOutlineDarkMode />}
+          <button className={`rounded-full p-2 dark:text-white text-black`} onClick={() => toggleMode()} >
+            {isDarkMode ? <BsSun className="dark:text-white text-black" /> : <MdOutlineDarkMode className="dark:text-white text-black" />}
           </button>
         </div>
       </div>}
