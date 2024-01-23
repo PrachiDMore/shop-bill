@@ -43,7 +43,7 @@ const LoginNew = ({ nav = false }) => {
           <div className='grid gap-3'>
             <ButtonNew type={"submit"} text={'Login'} />
             <div className='flex gap-2 justify-center'>
-              <p className='text-sm font-semibold'>Already have an account?</p>
+              <p className='text-sm font-semibold'>Don't have an account?</p>
               <Link to={'/create-account'} className='text-darkBlue text-sm font-semibold'>Create account</Link>
             </div>
           </div>

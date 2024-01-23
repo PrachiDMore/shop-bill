@@ -150,7 +150,7 @@ const MainNew = () => {
             <InputNew id={"businessType"} required={true} value={formState?.businessType} onChange={handleChange} className={'w-full'} placeholder={'Business type'} icon={'/assets/business-type.svg'} />
           </div>
           <div className="grid lg:grid-cols-2 lg:gap-8 gap-5">
-            <InputNew id={"gstNo"} required={true} value={formState?.gstNo} onChange={handleChange} placeholder={'GST number'} icon={'/assets/gst-no.svg'} />
+            <InputNew id={"gstNo"} required={false} value={formState?.gstNo} onChange={handleChange} placeholder={'GST number'} icon={'/assets/gst-no.svg'} />
             <InputNew id={"location"} required={true} value={formState?.location} onChange={handleChange} placeholder={'Location'} icon={'/assets/location.svg'} />
           </div>
           <ButtonNew type={"submit"} className={'w-40'} text={'Save'} />

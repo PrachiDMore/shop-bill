@@ -93,7 +93,7 @@ const ProductsList = () => {
       <LayoutNew nav={true}>
         <button onClick={() => {
           setModal({ show: true })
-        }} className="fixed bottom-20 right-3 bg-main text-white text-4xl font-medium h-12 w-12 rounded-full z-[1000]">+</button>
+        }} className="fixed bottom-12 left-1/2 -translate-x-1/2 bg-main text-white text-4xl font-medium h-12 w-12 rounded-full z-[100000]">+</button>
 
         {modal.show && (
           <AddProductModal
@@ -112,7 +112,7 @@ const ProductsList = () => {
             placeholder="Search" className={"bg-white"} />
           <div className="h-[70vh] mt-4 flex flex-col gap-y-4">
             {
-              suggestedProducts.map((product) => {
+              suggestedProducts?.map((product) => {
                 return <div onClick={() => {
                   setModal({show: true, update: true, data: product})
                 }} className="px-5 py-3 rounded-lg dark:bg-white/10 bg-white shadow-md">

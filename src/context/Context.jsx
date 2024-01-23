@@ -44,7 +44,6 @@ const Context = ({ children }) => {
     setUserDetails(data);
   };
 
-  useEffect(() => {
     const fetchData = async () => {
       const token = localStorage.getItem("token");
 
@@ -80,6 +79,8 @@ const Context = ({ children }) => {
       }
     };
 
+
+  useEffect(() => {
     fetchData();
   }, []);
 

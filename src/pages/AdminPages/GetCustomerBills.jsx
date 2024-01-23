@@ -250,11 +250,11 @@ const GetCustomerBills = () => {
     setFilteredDates("");
 
     if (selectedPeriod !== "unpaid") {
-      const filteredBills = businessBills.filter((bill) => {
+      const filteredBills = businessBills?.filter((bill) => {
         // console.log(selectedPeriod);
         const billDate = moment(bill.createdAt);
         if (selectedPeriod === "all") {
-          return businessBills.reduce(
+          return businessBills?.reduce(
             (total, bill) => total + (bill.grandtotal - bill.discount),
             0
           ); // No filtering needed, include all bills
@@ -281,7 +281,7 @@ const GetCustomerBills = () => {
         }
       });
       if (selectedPeriod !== "unpaid") {
-        const totalTurnover = filteredBills.reduce((total, bill) => {
+        const totalTurnover = filteredBills?.reduce((total, bill) => {
           return total + (bill.grandtotal - bill.discount);
         }, 0);
         return totalTurnover;

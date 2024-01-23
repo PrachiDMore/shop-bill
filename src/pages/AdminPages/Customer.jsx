@@ -77,7 +77,7 @@ const Customers = () => {
       <LayoutNew>
         <button onClick={() => {
           setModal({ show: true })
-        }} className="fixed bottom-20 right-3 bg-main text-white text-4xl font-medium h-12 w-12 rounded-full z-[1000]">+</button>
+        }} className="fixed bottom-12 left-1/2 -translate-x-1/2 bg-main text-white text-4xl font-medium h-12 w-12 rounded-full z-[100000]">+</button>
         {
           modal.show && <AddCustomerModal
             data={modal.show && modal.data}
