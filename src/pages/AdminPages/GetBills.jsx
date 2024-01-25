@@ -17,7 +17,8 @@ import moment from "moment";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import BillPreviewModal from "../../Modal/BillPreviewModal";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "sonner";
+
 const GetBills = () => {
   const { setCustomerID, customerID } = ContextAuth();
   const message = "Maggie(8) -40Rs  "; // Replace with your desired message
@@ -493,7 +494,6 @@ const GetBills = () => {
             )}
           </div>
         </div>
-        <ToastContainer />
         <Navigation />
       </LayoutMain>
     </>

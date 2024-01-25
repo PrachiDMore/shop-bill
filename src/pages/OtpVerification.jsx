@@ -5,8 +5,7 @@ import LoginWithOTP from "../components/Button/LoginWithOTP";
 import { Link, useNavigate } from "react-router-dom";
 import { ContextAuth } from "../context/Context";
 import Input from "../components/Input/Input";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "sonner";
 import axios from "axios";
 import Spinner from "../components/Spinner";
 import AOS from "aos";
@@ -254,7 +253,6 @@ const VerifyOTP = () => {
             </div>
           </div>
         </div>
-        <ToastContainer />
       </LayoutMain>
     </>
   );

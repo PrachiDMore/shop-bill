@@ -11,7 +11,7 @@ import jwtDecode from "jwt-decode";
 import { ContextAuth } from "../../context/Context";
 import Spinner from "../../components/Spinner";
 import Navigation from "../../components/Navigation";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "sonner";
 import LayoutNew from "../../components/layout/LayoutNew";
 import InputNew from "../../components/InputNew";
 

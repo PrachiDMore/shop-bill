@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "sonner";
 import { ThemeContextAuth } from "../context/ThemeContext";
 import { ContextAuth } from "../context/Context";
 import axios from "axios";
@@ -31,16 +31,7 @@ const PaidModal = ({ setPaidModal, data, billData }) => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       }).then((res) => {
-        toast.success(res?.data?.messaage, {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: false,
-          theme: "light",
-        });
+        toast.success(res?.data?.messaage);
         if (!res.data.error) {
           window.location.reload();
         }
@@ -89,7 +80,6 @@ const PaidModal = ({ setPaidModal, data, billData }) => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </>
   );
 };

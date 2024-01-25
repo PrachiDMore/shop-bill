@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import ButtonNew from '../components/Button/ButtonNew'
 import { useState } from 'react'
 import axios from 'axios'
-import { toast } from 'react-toastify'
+import { toast } from 'sonner'
 
 const LoginNew = ({ nav = false }) => {
   const [username, setUsername] = useState('')
@@ -14,18 +14,25 @@ const LoginNew = ({ nav = false }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios('https://khatabook-one.vercel.app/sign-in', {
-      method: "POST",
-      data: {
-        "username":username,
-        "password":password
-      }
-    })
-    .then((res) => {
-      toast.success("Success")
-      localStorage.setItem("token", `${res?.data.token}`);
-      navigate("/dashboard");
-    })
+    try {
+      axios('https://khatabook-one.vercel.app/sign-in', {
+        method: "POST",
+        data: {
+          "username": username,
+          "password": password
+        }
+      })
+        .then((res) => {
+          toast.success("Logged In Successfully!")
+          localStorage.setItem("token", `${res?.data.token}`);
+          navigate("/dashboard");
+        })
+        .catch((err) => {
+          toast.error(err.message)
+        })
+    } catch (err) {
+      toast.error(err.message)
+    }
   }
 
   return (

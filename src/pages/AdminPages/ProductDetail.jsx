@@ -11,7 +11,7 @@ import { BiArrowBack } from "react-icons/bi";
 import Navigation from "../../components/Navigation";
 import PageLoader from "../../components/PageLoader";
 import moment from "moment";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "sonner";
 
 const ProductDetail = () => {
 

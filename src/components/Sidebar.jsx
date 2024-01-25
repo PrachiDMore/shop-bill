@@ -5,7 +5,7 @@ import { MdOutlineDarkMode } from "react-icons/md";
 import { ThemeContextAuth } from "../context/ThemeContext";
 import { BsSun } from "react-icons/bs";
 import { GrPowerShutdown } from "react-icons/gr";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 import LogoutModal from "../Modal/LogoutModal";
 import { BiArrowBack } from "react-icons/bi";
 

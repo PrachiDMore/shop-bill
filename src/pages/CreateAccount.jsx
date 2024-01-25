@@ -4,7 +4,7 @@ import InputNew from '../components/InputNew'
 import { Link, useNavigate } from 'react-router-dom'
 import ButtonNew from '../components/Button/ButtonNew'
 import axios from 'axios'
-import { toast } from 'react-toastify'
+import { toast } from "sonner";
 
 const CreateAccount = ({ nav = false }) => {
   const [username, setUsername] = useState('')
@@ -14,26 +14,33 @@ const CreateAccount = ({ nav = false }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios('https://khatabook-one.vercel.app/sign-up', {
-      method: "POST",
-      data: {
-        "username":username,
-        "phoneNo":password,
-        "password":phoneNo
-      }
-    })
-    .then((res) => {
-      localStorage.setItem("token", `${res?.data.token}`);
-      navigate("/dashboard");
-      toast.success("Success")
-    })
+    try {
+      axios('https://khatabook-one.vercel.app/sign-up', {
+        method: "POST",
+        data: {
+          "username": username,
+          "phoneNo": password,
+          "password": phoneNo
+        }
+      })
+        .then((res) => {
+          localStorage.setItem("token", `${res?.data.token}`);
+          navigate("/dashboard");
+          toast.success("Success")
+        })
+        .catch((err) => {
+          toast.error(err.message)
+        })
+    } catch (error) {
+      toast.error(error.message)
+    }
   }
 
   return (
     <LayoutNew nav={false}>
       <div className='w-screen min-h-screen flex flex-col lg:gap-8 gap-10 pt-12 relative z-10'>
         <div className='w-screen flex justify-center'>
-        <img className='w-28 h-28' src="/logo.png" alt="" />
+          <img className='w-28 h-28' src="/logo.png" alt="" />
         </div>
         <h1 className='w-screen text-center text-2xl font-extrabold text-darkBlue'>Create account</h1>
         <form onSubmit={handleSubmit} className='w-screen lg:px-96 px-7 grid gap-10'>
@@ -43,7 +50,7 @@ const CreateAccount = ({ nav = false }) => {
             <InputNew value={password} onChange={(e) => setPassword(e.target.value)} icon={'/assets/password1.svg'} placeholder={'Password'} type={"password"} />
           </div>
           <div className='grid gap-3'>
-            <ButtonNew text={'Create Account'}/>
+            <ButtonNew text={'Create Account'} />
             <div className='flex gap-2 justify-center'>
               <p className='text-sm font-semibold'>Already have an account?</p>
               <Link to={'/login'} className='text-darkBlue text-sm font-semibold'>Login</Link>

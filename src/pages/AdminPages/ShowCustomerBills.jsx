@@ -19,7 +19,7 @@ import Navigation from "../../components/Navigation";
 import PageLoader from "../../components/PageLoader";
 import moment from "moment";
 import PaidModal from "../../Modal/PaidModal";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "sonner";
 import LayoutNew from "../../components/layout/LayoutNew";
 import InputNew from "../../components/InputNew";
 

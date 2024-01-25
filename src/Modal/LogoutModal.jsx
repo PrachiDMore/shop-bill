@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "sonner";
 import { ThemeContextAuth } from "../context/ThemeContext";
 
 const LogoutModal = ({ setModel }) => {
@@ -9,16 +9,7 @@ const LogoutModal = ({ setModel }) => {
   const naviGate = useNavigate();
   const logout = () => {
     localStorage.removeItem("token");
-    toast.success("Logout Successfully", {
-      position: "top-center",
-      autoClose: 3000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: false,
-      draggable: false,
-      progress: false,
-      theme: "light",
-    });
+    toast.success("Logout Successfully");
     window.location.reload();
     naviGate('/login')
   };
@@ -56,7 +47,6 @@ const LogoutModal = ({ setModel }) => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </>
   );
 };

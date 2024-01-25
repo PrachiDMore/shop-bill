@@ -4,8 +4,7 @@ import temp_logo from "../images/temp_logo.svg";
 import { useNavigate } from "react-router-dom";
 import { ContextAuth } from "../context/Context";
 import Input from "../components/Input/Input";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "sonner";
 import axios from "axios";
 
 import Spinner from "../components/Spinner";
@@ -155,7 +154,6 @@ const Login = () => {
             </div>
           </div>
         </div>
-        <ToastContainer />
       </LayoutMain>
     </>
   );

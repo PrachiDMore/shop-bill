@@ -19,7 +19,7 @@ import Navigation from "../../components/Navigation";
 import PageLoader from "../../components/PageLoader";
 import moment from "moment";
 import PaidModal from "../../Modal/PaidModal";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "sonner";
 const ShowCustomerDetails = () => {
   const { isDarkMode } = ThemeContextAuth();
   const { id } = useParams();
@@ -458,7 +458,6 @@ const ShowCustomerDetails = () => {
             <PageLoader className={"h-[40vh]"} />
           )}
         </div>
-        <ToastContainer/>
       </LayoutMain>
     </>
   );

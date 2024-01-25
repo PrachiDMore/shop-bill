@@ -11,7 +11,7 @@ import { BiArrowBack, BiShareAlt } from "react-icons/bi";
 import moment from "moment";
 import { ThemeContextAuth } from "../../context/ThemeContext";
 import html2canvas from "html2canvas";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "sonner";
 import Spinner from "../../components/Spinner";
 import PageLoader from "../../components/PageLoader";
 
@@ -347,7 +347,6 @@ const ShowSingleBill = () => {
         )}
       </div>
         </div>
-      <ToastContainer />
     </>
   );
 };

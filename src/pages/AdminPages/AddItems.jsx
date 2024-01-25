@@ -11,7 +11,7 @@ import jwtDecode from "jwt-decode";
 import { ContextAuth } from "../../context/Context";
 import Spinner from "../../components/Spinner";
 import Navigation from "../../components/Navigation";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "sonner";
 
 const AddItems = () => {
   const [items, setItems] = useState([]);
@@ -771,7 +771,6 @@ const AddItems = () => {
             </button>
           </div>
         </div>
-        <ToastContainer />
       </LayoutMain>
     </>
   );

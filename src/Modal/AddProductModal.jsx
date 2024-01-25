@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import LayoutMain from "../components/layout/LayoutMain";
 import { ThemeContextAuth } from "../context/ThemeContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "sonner";
 import Spinner from "../components/Spinner";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
@@ -74,16 +74,7 @@ const AddProductModal = ({ data, setModal, modal }) => {
           .then((res) => {
             const productId = res.data._id;
             setProductdata(productId);
-            toast.success("Product Added Successfully", {
-              position: "top-center",
-              autoClose: 1500,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: false,
-              draggable: false,
-              progress: false,
-              theme: "light",
-            });
+            toast.success("Product Added Successfully");
             setLoading(false);
             setTimeout(() => {
               window.location.reload();
@@ -94,41 +85,14 @@ const AddProductModal = ({ data, setModal, modal }) => {
           })
           .catch((err) => {
             console.log(err);
-            toast.error(err?.message, {
-              position: "top-center",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: false,
-              draggable: false,
-              progress: false,
-              theme: "light",
-            });
+            toast.error(err?.message);
             setLoading(false);
           });
       } else {
-        toast.error("Enter Details Correctly", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: false,
-          theme: "light",
-        });
+        toast.error("Enter Details Correctly");
       }
     } catch (err) {
-      toast.error(err?.message, {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: false,
-        progress: false,
-        theme: "light",
-      });
+      toast.error(err?.message);
     }
   };
 
@@ -254,7 +218,6 @@ const AddProductModal = ({ data, setModal, modal }) => {
 
 
         </CSSTransition>
-        <ToastContainer />
       </LayoutMain>
     </>
   );

@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { ContextAuth } from "../context/Context";
 import jwtDecode from "jwt-decode";
 import Spinner from "../components/Spinner";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "sonner";
 import { ThemeContextAuth } from "../context/ThemeContext";
 import LayoutMain from "../components/layout/LayoutMain";
 import InputNew from "../components/InputNew";
@@ -65,41 +65,14 @@ const AddCustomerModal = ({ data, setModal }) => {
             setLoading(false);
           })
           .catch((res) => {
-            toast.error("Customer already exist", {
-              position: "top-center",
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: false,
-              pauseOnHover: false,
-              draggable: false,
-              progress: false,
-              theme: "light",
-            });
+            toast.error("Customer already exist");
             setLoading(false);
           });
       } else {
-        toast.error("Enter 10 digit number", {
-          position: "top-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: false,
-          draggable: false,
-          progress: false,
-          theme: "light",
-        });
+        toast.error("Enter 10 digit number");
       }
     } catch (err) {
-      toast.error(err?.message, {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: false,
-        progress: false,
-        theme: "light",
-      });
+      toast.error(err?.message);
     }
   };
 
@@ -177,7 +150,6 @@ const AddCustomerModal = ({ data, setModal }) => {
             </div>
           </div>
         </CSSTransition>
-        <ToastContainer />
       </LayoutMain>
     </>
   );
