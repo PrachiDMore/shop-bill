@@ -47,12 +47,11 @@ const LoginNew = ({ nav = false }) => {
             <InputNew value={username} onChange={(e) => setUsername(e.target.value)} icon={'/assets/user.svg'} placeholder={'Email or Username'} type={"text"} />
             <InputNew value={password} onChange={(e) => setPassword(e.target.value)} icon={'/assets/password1.svg'} placeholder={'Password'} type={"password"} />
           </div>
-          <div className='grid gap-3'>
+          <div className='grid gap-3 grid-cols-1'>
             <ButtonNew type={"submit"} text={'Login'} />
-            <div className='flex gap-2 justify-center'>
-              <p className='text-sm font-semibold'>Don't have an account?</p>
-              <Link to={'/create-account'} className='text-darkBlue text-sm font-semibold'>Create account</Link>
-            </div>
+            <Link to={"/create-account"}>
+              <ButtonNew type={"button"} text={'Signup'} />
+            </Link>
           </div>
         </form>
       </div>

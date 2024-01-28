@@ -203,7 +203,7 @@ const ShowCustomerBills = () => {
     }
   };
   const handleBack = () => {
-    naviGate("/get-bill");
+    naviGate("/get-bills-all");
   };
 
   useEffect(() => {

@@ -199,7 +199,7 @@ const ShowCustomerDetails = () => {
     }
   };
   const handleBack = () => {
-    naviGate("/get-bill");
+    naviGate("/get-bills-all");
   };
 
   useEffect(() => {

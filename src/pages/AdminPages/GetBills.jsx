@@ -18,6 +18,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import BillPreviewModal from "../../Modal/BillPreviewModal";
 import { toast } from "sonner";
+import LayoutNew from "../../components/layout/LayoutNew";
 
 const GetBills = () => {
   const { setCustomerID, customerID } = ContextAuth();
@@ -310,7 +311,7 @@ const GetBills = () => {
         setShowModal={setShowBillPreview}
         billID={customerID}
       />
-      <LayoutMain>
+      <LayoutNew nav={true}>
         <Sidebar />
         <div className=" md:w-[90vw] w-[100vw]  flex justify-center items-center  my-5 mx-auto">
           <div className="md:w-[100vw] flex-col justify-center items-center">
@@ -428,7 +429,6 @@ const GetBills = () => {
                   <div className="md:grid md:grid-cols-2 md:gap-2 md:w-[60vw] mx-auto grid gap-y-1  md:px-0 w-[100vw] pb-10">
                     {filterResults?.map((customer, index) => {
                       const dateObj = new Date(customer?.createdAt);
-                      console.log(index);
 
                       const day = dateObj.getDate().toString().padStart(2, '0');
                       const month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
@@ -436,7 +436,6 @@ const GetBills = () => {
                       
                       const formattedDate = `${day}${month}${year}-${index+1}`;
 
-                      // console.log(customer);
                       return (
                         <CustomerCard
                           onClick={handleClick}
@@ -447,8 +446,7 @@ const GetBills = () => {
                           amount={customer?.grandtotal}
                           discount={customer?.discount}
                           id={customer?.customerId?._id}
-                          // billId={customer?._id}
-                          billId={formattedDate}
+                          billId={customer?._id}
                           mobileNumber={customer?.customerId?.customerNumber}
                           grandTotal={customer?.grandtotal}
                           time={moment(customer?.createdAt).format("h:mm a")}
@@ -458,9 +456,7 @@ const GetBills = () => {
                               className="bg-green-500 hover:bg-green-600 text-white font-bold  p-[6px] rounded-full  flex gap-2 justify-center items-start "
                               phoneNumber={customer?.customerNumber}
                               message={message}
-                              onClick={() => {
-                                handleButtonClick(customer?.customerNumber);
-                              }}
+                              // onClick={}
                             >
                               <BsWhatsapp className="text-2xl"></BsWhatsapp>
                             </button>
@@ -495,7 +491,7 @@ const GetBills = () => {
           </div>
         </div>
         <Navigation />
-      </LayoutMain>
+      </LayoutNew>
     </>
   );
 };

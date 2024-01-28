@@ -24,8 +24,8 @@ const CreateAccount = ({ nav = false }) => {
         }
       })
         .then((res) => {
-          localStorage.setItem("token", `${res?.data.token}`);
-          navigate("/dashboard");
+          // localStorage.setItem("token", `${res?.data.token}`);
+          navigate("/login");
           toast.success("Success")
         })
         .catch((err) => {
@@ -51,10 +51,9 @@ const CreateAccount = ({ nav = false }) => {
           </div>
           <div className='grid gap-3'>
             <ButtonNew text={'Create Account'} />
-            <div className='flex gap-2 justify-center'>
-              <p className='text-sm font-semibold'>Already have an account?</p>
-              <Link to={'/login'} className='text-darkBlue text-sm font-semibold'>Login</Link>
-            </div>
+            <Link to={'/login'} >
+              <ButtonNew type={"button"} text={'Login'} />
+            </Link>
           </div>
         </form>
       </div>

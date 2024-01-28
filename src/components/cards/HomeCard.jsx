@@ -28,6 +28,7 @@ const CustomerCard = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [colorChange, setcolorChange] = useState(false);
   const [showPaid, setShowPaid] = useState(true);
+  console.log(billId);
 
   const handleColorChange = () => {
     setcolorChange(!colorChange);

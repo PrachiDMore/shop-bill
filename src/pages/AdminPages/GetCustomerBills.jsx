@@ -418,7 +418,6 @@ const GetCustomerBills = () => {
                         const year = dateObj.getFullYear().toString();
 
                         const formattedDate = `${day}${month}${year}-${index + 1}`;
-
                         return (
                           <div className="flex-1">
                             <CustomerCard
@@ -430,8 +429,7 @@ const GetCustomerBills = () => {
                               amount={customer?.grandtotal}
                               discount={customer?.discount}
                               id={customer?.customerId?._id}
-                              // billId={customer?._id}
-                              billId={formattedDate}
+                              billId={customer?._id}
                               mobileNumber={customer?.customerId?.customerNumber}
                               grandTotal={customer?.grandtotal}
                               time={moment(customer?.createdAt).format("h:mm a")}

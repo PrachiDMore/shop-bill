@@ -127,7 +127,6 @@ const ShowSingleBill = () => {
         })
           .then((res) => {
             setSingleBill(res?.data?.response);
-
             setLoading(false);
             setitemsSingeBill(res?.data?.response?.items);
           })

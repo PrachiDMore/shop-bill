@@ -6,10 +6,10 @@ const BillPreviewModal = ({ showModal, setShowModal, billID }) => {
   return (
     <>
       {showModal && (
-        <div className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-30 z-[500]"></div>
+        <div className="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-30 z-[50000]"></div>
       )}
       {showModal && (
-        <section className={`h-[90vh] overflow-y-auto w-[100vw] md:w-[90vw] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-[1000] ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
+        <section className={`h-[90vh] overflow-y-auto w-[100vw] md:w-[90vw] fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-[100000] ${isDarkMode ? 'bg-gray-800' : 'bg-white'}`}>
           <div className="fixed top-1  right-3 flex justify-end md:px-5 py-3 text-red-500">
             <button
               onClick={() => {
@@ -28,13 +28,13 @@ const BillPreviewModal = ({ showModal, setShowModal, billID }) => {
               frameborder="0"
             ></iframe>
           </div> */}
-          <div className="lg:py-6 py-8">
+          {/* <div className="lg:py-6 py-8"> */}
             <iframe
               className=" w-full h-[90vh]"
-              src={`https://cont-o.vercel.app/invoice/${billID}?show=false`}
+              src={`${window.location.origin}/invoice/${billID}?show=false`}
               frameborder="0"
             ></iframe>
-          </div>
+          {/* </div> */}
         </section>
       )}
     </>
